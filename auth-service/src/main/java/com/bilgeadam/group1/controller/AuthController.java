@@ -30,17 +30,17 @@ public class AuthController {
     @PostMapping(REGISTERSITEMANAGER)
     @Operation(summary = "Website manager kayit eden metot")
     public ResponseEntity<RegisterResponseDto> registerWebsiteManager(@RequestBody @Valid RegisterRequestDto dto){
-        return  ResponseEntity.ok( websiteManagerService.register(dto));
+        return  ResponseEntity.ok( websiteManagerService.registerWebsiteManager(dto));
     }
 
     @PostMapping(REGISTERGENERALMANAGER)
     @Operation(summary = "General Manager kayit eden metot")
     public ResponseEntity<RegisterResponseDto> registerGeneralManager(@RequestBody @Valid RegisterRequestDto dto){
-        return  ResponseEntity.ok( websiteManagerService.register(dto));
+        return  ResponseEntity.ok( websiteManagerService.registerWebsiteManager(dto));
     }
 
-    @PostMapping(LOGIN)
-    public ResponseEntity<LoginResponseDto> login(@RequestBody @Valid LoginRequestDto dto){
-        return  ResponseEntity.ok(websiteManagerService.login(dto));
-    }
+//    @PostMapping(LOGIN)
+//    public ResponseEntity<LoginResponseDto> login(@RequestBody @Valid LoginRequestDto dto){
+//        return  ResponseEntity.ok(websiteManagerService.login(dto));
+//    }
 }

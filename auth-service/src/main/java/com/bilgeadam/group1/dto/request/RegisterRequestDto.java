@@ -21,7 +21,7 @@ public class RegisterRequestDto {
     private String email;
 
     @NotBlank(message = "Sifre bos gecilemez.")
-    @Size(min = 8,max = 16)
+    @Size(min = 8 ,max=32 ,message = "Sifre en az 8 karakter en fazla 32 karakter olabilir")
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*!])(?=\\S+$).{8,}$")
     private String password;
 
