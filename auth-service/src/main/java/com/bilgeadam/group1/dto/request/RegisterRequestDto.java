@@ -26,7 +26,7 @@ public class RegisterRequestDto {
     private String password;
 
     @NotBlank(message = "Sifre bos gecilemez.")
-    @Size(min = 8,max = 16)
+    @Size(min = 8,max = 32)
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*!])(?=\\S+$).{8,}$")
     private String rePassword;
 }

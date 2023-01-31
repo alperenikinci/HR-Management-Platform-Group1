@@ -41,6 +41,7 @@ public class WebsiteManagerService extends ServiceManager<WebsiteManager,Long > 
             //TODO website manager service yapıldığı zaman buradan bir websitemanager profili oluşturulacak.
             return IWebsiteManagerMapper.INSTANCE.fromWebsiteManagerToResponse(websiteManager);
         } catch (Exception e){
+            System.out.println(e.toString());
             throw new AuthManagerException(ErrorType.REGISTER_ERROR);
         }
 
