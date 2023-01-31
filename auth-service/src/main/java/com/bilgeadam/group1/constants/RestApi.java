@@ -5,7 +5,7 @@ public class RestApi {
     public static final String VERSION="api/v1";
     public static final String AUTH=VERSION+"/auth";
 
-    public static final String REGISTERSITEMANAGER="/registersitemanager";
+    public static final String REGISTERWEBSITEMANAGER="/registerwebsitemanager";
     public static final String REGISTERGENERALMANAGER="/registergeneralmanager";
     public static final String LOGIN="/login";
     public static final String UPDATE="/update";

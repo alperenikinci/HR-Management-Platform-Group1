@@ -8,7 +8,6 @@ import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring",unmappedTargetPolicy = ReportingPolicy.IGNORE)
-
 public interface IWebsiteManagerMapper {
 
     IWebsiteManagerMapper INSTANCE = Mappers.getMapper(IWebsiteManagerMapper.class);

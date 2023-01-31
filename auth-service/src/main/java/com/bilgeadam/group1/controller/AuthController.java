@@ -27,10 +27,10 @@ public class AuthController {
     private final JwtTokenManager jwtTokenManager;
 
 
-    @PostMapping(REGISTERSITEMANAGER)
+    @PostMapping(REGISTERWEBSITEMANAGER)
     @Operation(summary = "Website manager kayit eden metot")
     public ResponseEntity<RegisterResponseDto> registerWebsiteManager(@RequestBody @Valid RegisterRequestDto dto){
-        return  ResponseEntity.ok( websiteManagerService.registerWebsiteManager(dto));
+        return  ResponseEntity.ok(websiteManagerService.registerWebsiteManager(dto));
     }
 
     @PostMapping(REGISTERGENERALMANAGER)

@@ -26,7 +26,6 @@ public class WebsiteManager {
     @Column(name= "email" ,unique = true)
     @NotBlank
     private String email;
-
     private String password;
     private String activationCode;
 
