@@ -98,12 +98,6 @@ public class GlobalExceptionHandler {
         ErrorType errorType = ErrorType.BAD_REQUEST;
         return new ResponseEntity<>(createError(errorType, exception), errorType.getHttpStatus());
     }
-    @ExceptionHandler
-    @ResponseBody
-    public final ResponseEntity<ErrorMessage> handlePsqlException(DataIntegrityViolationException exception){
-        ErrorType errorType=ErrorType.USERNAME_DUPLICATE;
-        return new ResponseEntity<>(createError(errorType,exception),errorType.getHttpStatus());
-    }
 
 
 
