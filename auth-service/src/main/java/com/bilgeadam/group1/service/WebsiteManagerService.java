@@ -22,7 +22,7 @@ public class WebsiteManagerService extends ServiceManager<WebsiteManager,Long > 
     private final JwtTokenManager jwtTokenManager;
 
 
-    public WebsiteManagerService(IWebsiteManagerRepository websiteManagerRepository, CacheManager cacheManager, JwtTokenManager jwtTokenManager) {
+    public WebsiteManagerService(IWebsiteManagerRepository websiteManagerRepository, JwtTokenManager jwtTokenManager) {
         super(websiteManagerRepository);
         this.websiteManagerRepository=websiteManagerRepository;
         this.jwtTokenManager = jwtTokenManager;
