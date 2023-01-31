@@ -20,13 +20,13 @@ public class RegisterRequestDto {
     @NotBlank(message = "Kullanici e-maili bos gecilemez.")
     private String email;
 
-    @NotBlank(message = "Şifre boş geçilemez")
+    @NotBlank(message = "Sifre bos gecilemez.")
     @Size(min = 8,max = 16)
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*!])(?=\\S+$).{8,}$")
     private String password;
 
-    @NotBlank(message = "Şifre boş geçilemez")
+    @NotBlank(message = "Sifre bos gecilemez.")
     @Size(min = 8,max = 16)
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*!])(?=\\S+$).{8,}$")
-    private String repassword;
+    private String rePassword;
 }

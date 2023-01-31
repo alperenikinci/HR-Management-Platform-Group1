@@ -13,7 +13,8 @@ public class RegisterResponseDto {
 
     private String email;
     private String password;
-    private String repassword;
+    private String rePassword;
+    private String activationCode;
     private String token;
 
 }

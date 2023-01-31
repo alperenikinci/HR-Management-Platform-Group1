@@ -28,6 +28,7 @@ public class WebsiteManager {
     private String email;
 
     private String password;
+    private String activationCode;
 
     @Enumerated(EnumType.STRING)
     @Builder.Default
