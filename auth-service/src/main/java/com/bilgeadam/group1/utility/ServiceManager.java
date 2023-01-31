@@ -1,14 +1,14 @@
 package com.bilgeadam.group1.utility;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 public class ServiceManager<T, ID> implements IServices<T, ID> {
-    private final MongoRepository<T, ID> repository;
+    private final JpaRepository<T, ID> repository;
 
-    public ServiceManager(MongoRepository<T, ID> repository) {
+    public ServiceManager(JpaRepository<T, ID> repository) {
 
         this.repository = repository;
     }
