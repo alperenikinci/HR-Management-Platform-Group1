@@ -11,9 +11,13 @@ import com.bilgeadam.group1.utility.CodeGenerator;
 import com.bilgeadam.group1.utility.JwtTokenManager;
 import com.bilgeadam.group1.utility.ServiceManager;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
+
+import static com.bilgeadam.group1.constants.RestApi.FINDALL;
 
 @Service
 public class WebsiteManagerService extends ServiceManager<WebsiteManager,Long > {
@@ -46,7 +50,14 @@ public class WebsiteManagerService extends ServiceManager<WebsiteManager,Long > 
         }
 
 
+
     }
 
 
+
+    @Cacheable(value = FINDALL)
+    public List<WebsiteManager> findAll(WebsiteManager websiteManager) {
+
+        return websiteManagerRepository.findAll(websiteManager);
+    }
 }
