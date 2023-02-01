@@ -1,17 +1,8 @@
-server:
-  port: 8090
-
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/hr-management-auth-db
-    username: postgres
-    password: root
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-
-jwt:
-  secretKey: "HRGroup-1"
-  issuer: "group1"
-  audience: "bilgeadam"
+  cloud:
+    config:
+      uri:  http://localhost:8888
+  config:
+    import: "configserver:"
+  application:
+    name: auth-service-application

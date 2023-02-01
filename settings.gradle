@@ -1,3 +1,4 @@
 rootProject.name = 'Human-Resources-Management-Platform'
 include 'auth-service'
+include 'config-server-git'
 

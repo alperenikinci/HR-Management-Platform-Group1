@@ -10,7 +10,7 @@ buildscript {
 dependencies {
     implementation libs.springBootJpa
     implementation libs.postgresql
-//    implementation libs.springCloudConfigClient
+    implementation libs.springCloudConfigClient
 //    implementation libs.springBootRabbitMQ
     implementation libs.springBootStarterSecurity
 }

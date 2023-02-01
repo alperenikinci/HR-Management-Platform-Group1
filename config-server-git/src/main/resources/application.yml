@@ -1,0 +1,16 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server-git
+  cloud:
+    config:
+      server:
+        git:
+          uri: "https://github.com/alperenikinci/HR-Management-Platform-Config-Server.git"
+          default-label: main
+          skip-ssl-validation: true
+          username: "alperenikinci"
+          password: "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"
+

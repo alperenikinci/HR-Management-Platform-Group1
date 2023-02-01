@@ -2,12 +2,12 @@ package com.bilgeadam.group1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.cloud.config.server.EnableConfigServer;
 
 @SpringBootApplication
-
-public class AuthServiceApplication {
+@EnableConfigServer
+public class ConfigServerGitApplication {
     public static void main(String[] args) {
-        SpringApplication.run(AuthServiceApplication.class,args);
+        SpringApplication.run(ConfigServerGitApplication.class);
     }
 }
