@@ -39,8 +39,8 @@ public class AuthController {
         return  ResponseEntity.ok( websiteManagerService.registerWebsiteManager(dto));
     }
 
-//    @PostMapping(LOGIN)
-//    public ResponseEntity<LoginResponseDto> login(@RequestBody @Valid LoginRequestDto dto){
-//        return  ResponseEntity.ok(websiteManagerService.login(dto));
-//    }
+    @PostMapping(LOGIN)
+    public ResponseEntity<LoginResponseDto> login(@RequestBody @Valid LoginRequestDto dto){
+        return  ResponseEntity.ok(websiteManagerService.login(dto));
+    }
 }

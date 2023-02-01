@@ -1,6 +1,8 @@
 package com.bilgeadam.group1.service;
 
+import com.bilgeadam.group1.dto.request.LoginRequestDto;
 import com.bilgeadam.group1.dto.request.RegisterRequestDto;
+import com.bilgeadam.group1.dto.response.LoginResponseDto;
 import com.bilgeadam.group1.dto.response.RegisterResponseDto;
 import com.bilgeadam.group1.exception.AuthManagerException;
 import com.bilgeadam.group1.exception.ErrorType;
@@ -14,6 +16,7 @@ import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Service
 public class WebsiteManagerService extends ServiceManager<WebsiteManager,Long > {
@@ -46,6 +49,17 @@ public class WebsiteManagerService extends ServiceManager<WebsiteManager,Long > 
         }
 
 
+    }
+
+    public LoginResponseDto login(LoginRequestDto dto) {
+        Optional<WebsiteManager> websiteManager = websiteManagerRepository.findOptionalByEmailAndPassword(dto.getEmail(), dto.getPassword());
+        if (websiteManager.isEmpty()) {
+            throw new AuthManagerException(ErrorType.LOGIN_ERROR);
+        }
+        LoginResponseDto loginResponseDto = IWebsiteManagerMapper.INSTANCE.toLoginResponseDto(websiteManager.get());
+        loginResponseDto.setToken(jwtTokenManager.createToken(websiteManager.get().getId()));
+
+        return loginResponseDto;
     }
 
 
