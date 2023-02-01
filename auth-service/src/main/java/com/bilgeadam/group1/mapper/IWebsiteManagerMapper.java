@@ -1,6 +1,7 @@
 package com.bilgeadam.group1.mapper;
 
 import com.bilgeadam.group1.dto.request.RegisterRequestDto;
+import com.bilgeadam.group1.dto.response.LoginResponseDto;
 import com.bilgeadam.group1.dto.response.RegisterResponseDto;
 import com.bilgeadam.group1.repository.entity.WebsiteManager;
 import org.mapstruct.Mapper;
@@ -16,5 +17,6 @@ public interface IWebsiteManagerMapper {
 
     RegisterResponseDto fromWebsiteManagerToResponse(final WebsiteManager websiteManager);
 
+    LoginResponseDto toLoginResponseDto(final  WebsiteManager websiteManager);
 
 }
