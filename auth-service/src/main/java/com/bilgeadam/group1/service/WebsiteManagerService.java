@@ -42,7 +42,7 @@ public class WebsiteManagerService extends ServiceManager<WebsiteManager,Long > 
             return IWebsiteManagerMapper.INSTANCE.fromWebsiteManagerToResponse(websiteManager);
         } catch (Exception e){
             System.out.println(e.toString());
-            throw new AuthManagerException(ErrorType.REGISTER_ERROR);
+            throw new AuthManagerException(ErrorType.DUPLICATE_EMAIL_ERROR);
         }
 
 
