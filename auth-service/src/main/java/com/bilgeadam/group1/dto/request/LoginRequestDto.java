@@ -22,7 +22,7 @@ public class LoginRequestDto {
 
     @NotBlank(message = "Şifre boş geçilemez")
     @Size(min = 8,max = 16)
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*!])(?=\\S+$).{8,}$")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*!])(?=\\S+$).{8,}$", message = "Sifreniz istenilen özelliklere sahip degil.")
     private String password;
 
 }

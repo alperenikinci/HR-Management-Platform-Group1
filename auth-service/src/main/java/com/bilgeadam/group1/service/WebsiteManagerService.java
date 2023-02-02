@@ -15,8 +15,12 @@ import com.bilgeadam.group1.utility.ServiceManager;
 import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Cacheable;
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
+
+import static com.bilgeadam.group1.constants.RestApi.FINDALL;
 
 @Service
 public class WebsiteManagerService extends ServiceManager<WebsiteManager,Long > {
@@ -61,6 +65,11 @@ public class WebsiteManagerService extends ServiceManager<WebsiteManager,Long > 
 
         return loginResponseDto;
     }
+
+    public List<WebsiteManager> findAll(){
+        return websiteManagerRepository.findAll();
+    }
+
 
 
 }
