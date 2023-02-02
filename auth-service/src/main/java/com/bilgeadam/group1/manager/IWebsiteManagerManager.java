@@ -2,10 +2,15 @@ package com.bilgeadam.group1.manager;
 
 import com.bilgeadam.group1.dto.request.UpdateTokenRequestDto;
 import com.bilgeadam.group1.dto.request.WebsiteManagerProfileCreateRequestDto;
+import com.bilgeadam.group1.dto.response.UpdateTokenResponseDto;
+
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.Optional;
 
 import static com.bilgeadam.group1.constants.RestApi.CREATE;
 import static com.bilgeadam.group1.constants.RestApi.UPDATETOKEN;
@@ -16,6 +21,6 @@ public interface IWebsiteManagerManager {
     @PostMapping(CREATE)
     public ResponseEntity<Boolean> createWebsiteManagerProfile (@RequestBody WebsiteManagerProfileCreateRequestDto dto);
 
-    @PostMapping(UPDATETOKEN)
-    public ResponseEntity<Boolean> updateToken(@RequestBody String token);
+    @PutMapping(UPDATETOKEN)
+    public ResponseEntity<Optional<UpdateTokenResponseDto>> updateTokenByEmail(@RequestBody UpdateTokenRequestDto dto);
 }

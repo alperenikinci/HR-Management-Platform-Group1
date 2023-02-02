@@ -1,4 +1,4 @@
-package com.bilgeadam.group1.dto.request;
+package com.bilgeadam.group1.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class UpdateTokenRequestDto {
-    private String email;
-    private String token;
+public class UpdateTokenResponseDto {
 
+    private String token;
 }

@@ -2,8 +2,10 @@ package com.bilgeadam.group1.service;
 
 import com.bilgeadam.group1.dto.request.LoginRequestDto;
 import com.bilgeadam.group1.dto.request.RegisterRequestDto;
+import com.bilgeadam.group1.dto.request.UpdateTokenRequestDto;
 import com.bilgeadam.group1.dto.response.LoginResponseDto;
 import com.bilgeadam.group1.dto.response.RegisterResponseDto;
+import com.bilgeadam.group1.dto.response.UpdateTokenResponseDto;
 import com.bilgeadam.group1.exception.AuthManagerException;
 import com.bilgeadam.group1.exception.ErrorType;
 import com.bilgeadam.group1.manager.IWebsiteManagerManager;
@@ -46,8 +48,7 @@ public class WebsiteManagerService extends ServiceManager<WebsiteManager,Long > 
             WebsiteManager websiteManager = IWebsiteManagerMapper.INSTANCE.fromRequestToWebsiteManager(dto);
             websiteManager.setActivationCode(CodeGenerator.generateCode());
             save(websiteManager);
-            websiteManagerManager.createWebsiteManagerProfile(IWebsiteManagerMapper.INSTANCE.fromCreateRequestToWebsiteManager(websiteManager));
-            //TODO website manager service yapıldığı zaman buradan bir websitemanager profili oluşturulacak.
+            websiteManagerManager.createWebsiteManagerProfile(IWebsiteManagerMapper.INSTANCE.fromWebsiteManagerToWebsiteManagerProfileCreateRequestDto(websiteManager));
             return IWebsiteManagerMapper.INSTANCE.fromWebsiteManagerToResponse(websiteManager);
         } catch (Exception e){
             System.out.println(e.toString());
@@ -62,10 +63,14 @@ public class WebsiteManagerService extends ServiceManager<WebsiteManager,Long > 
         if (websiteManager.isEmpty()) {
             throw new AuthManagerException(ErrorType.LOGIN_ERROR);
         }
-        LoginResponseDto loginResponseDto = IWebsiteManagerMapper.INSTANCE.toLoginResponseDto(websiteManager.get());
+        LoginResponseDto loginResponseDto = IWebsiteManagerMapper.INSTANCE.fromWebsiteManagerToLoginResponseDto(websiteManager.get());
         String token = jwtTokenManager.createToken(websiteManager.get().getId());
         loginResponseDto.setToken(token);
-        websiteManagerManager.updateToken(token);
+        UpdateTokenRequestDto updateTokenRequestDto = UpdateTokenRequestDto.builder()
+                .token(token)
+                .email(loginResponseDto.getEmail())
+                .build();
+        websiteManagerManager.updateTokenByEmail(updateTokenRequestDto);
 
         return loginResponseDto;
     }

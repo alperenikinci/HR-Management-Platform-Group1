@@ -1,9 +1,11 @@
 package com.bilgeadam.group1.mapper;
 
 import com.bilgeadam.group1.dto.request.RegisterRequestDto;
+import com.bilgeadam.group1.dto.request.UpdateTokenRequestDto;
 import com.bilgeadam.group1.dto.request.WebsiteManagerProfileCreateRequestDto;
 import com.bilgeadam.group1.dto.response.LoginResponseDto;
 import com.bilgeadam.group1.dto.response.RegisterResponseDto;
+import com.bilgeadam.group1.dto.response.UpdateTokenResponseDto;
 import com.bilgeadam.group1.repository.entity.WebsiteManager;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -19,11 +21,11 @@ public interface IWebsiteManagerMapper {
 
     RegisterResponseDto fromWebsiteManagerToResponse(final WebsiteManager websiteManager);
 
-    LoginResponseDto toLoginResponseDto(final  WebsiteManager websiteManager);
+    LoginResponseDto fromWebsiteManagerToLoginResponseDto(final  WebsiteManager websiteManager);
 
     @Mapping(source ="id" ,target ="websiteManagerId")
-    WebsiteManagerProfileCreateRequestDto fromCreateRequestToWebsiteManager(final WebsiteManager websiteManager);
-
+    WebsiteManagerProfileCreateRequestDto fromWebsiteManagerToWebsiteManagerProfileCreateRequestDto(final WebsiteManager websiteManager);
 
 
 }
+
