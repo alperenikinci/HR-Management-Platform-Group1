@@ -1,6 +1,6 @@
 package com.bilgeadam.group1.controller;
+import com.bilgeadam.group1.dto.request.UpdateTokenRequestDto;
 import com.bilgeadam.group1.dto.request.WebsiteManagerProfileCreateRequestDto;
-import com.bilgeadam.group1.dto.response.WebsiteManagerProfileCreateResponseDto;
 import com.bilgeadam.group1.service.WebsiteManagerProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,14 @@ public class WebsiteManagerController {
 
     private final WebsiteManagerProfileService websiteManagerProfileService;
     @PostMapping(CREATE)
-    public ResponseEntity<WebsiteManagerProfileCreateResponseDto> createWebsiteManagerProfile (@RequestBody WebsiteManagerProfileCreateRequestDto dto){
-        return ResponseEntity.ok(websiteManagerProfileService.createWebsiteManagerProfile(dto));
+    public ResponseEntity<Boolean> createWebsiteManagerProfile (@RequestBody WebsiteManagerProfileCreateRequestDto dto){
+        websiteManagerProfileService.createWebsiteManagerProfile(dto);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping(UPDATETOKEN)
+    public ResponseEntity<Boolean> updateToken(@RequestBody UpdateTokenRequestDto dto){
+        websiteManagerProfileService.updateToken(dto);
+        return ResponseEntity.ok().build();
     }
 }

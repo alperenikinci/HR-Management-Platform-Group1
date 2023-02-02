@@ -1,6 +1,5 @@
 package com.bilgeadam.group1.dto.request;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,9 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class WebsiteManagerProfileCreateRequestDto {
-
-    private Long websiteManagerId;
-    private String email;
+public class UpdateTokenRequestDto {
     private String token;
 }

@@ -1,7 +1,7 @@
 package com.bilgeadam.group1.mapper;
 
+import com.bilgeadam.group1.dto.request.UpdateTokenRequestDto;
 import com.bilgeadam.group1.dto.request.WebsiteManagerProfileCreateRequestDto;
-import com.bilgeadam.group1.dto.response.WebsiteManagerProfileCreateResponseDto;
 import com.bilgeadam.group1.repository.entity.WebsiteManagerProfile;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
@@ -14,6 +14,6 @@ public interface IWebsiteManagerMapper {
 
     WebsiteManagerProfile fromRequestToWebsiteManagerProfile(final WebsiteManagerProfileCreateRequestDto websiteManagerProfileCreateRequestDto);
 
-    WebsiteManagerProfileCreateResponseDto fromWebsiteManagerProfileToResponse(final WebsiteManagerProfile websiteManagerProfile);
+    WebsiteManagerProfile fromTokenUpdateRequestToWebsiteManagerProfile(final UpdateTokenRequestDto dto);
 
 }

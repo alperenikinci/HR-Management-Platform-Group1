@@ -12,6 +12,7 @@ public class RestApi {
     public static final String DELETEBYID="/deletebyid";
     public static final String DELETEBYAUTHID="/deletebyauthid";
     public static final String CREATE="/create";
+    public static final String UPDATETOKEN = "/updatetoken";
     public static final String UPDATEBYEMAIL="/updateusernameoremail";
     public static final String FINDALL="/findall";
     public static final String FINDBYID="/findbyid";

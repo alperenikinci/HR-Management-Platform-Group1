@@ -10,6 +10,7 @@ public interface IWebsiteManagerRepository extends JpaRepository<WebsiteManager,
 
     Optional<WebsiteManager> findOptionalByEmailAndPassword(String email, String password);
     List<WebsiteManager> findAll();
+    Optional<WebsiteManager> findOptionalByEmail(String email);
 
 
 }

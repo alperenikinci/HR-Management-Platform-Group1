@@ -1,8 +1,10 @@
 package com.bilgeadam.group1.service;
 
 
+import com.bilgeadam.group1.dto.request.UpdateTokenRequestDto;
 import com.bilgeadam.group1.dto.request.WebsiteManagerProfileCreateRequestDto;
-import com.bilgeadam.group1.dto.response.WebsiteManagerProfileCreateResponseDto;
+import com.bilgeadam.group1.exception.ErrorType;
+import com.bilgeadam.group1.exception.WebsiteManagerException;
 import com.bilgeadam.group1.mapper.IWebsiteManagerMapper;
 import com.bilgeadam.group1.repository.IWebsiteManagerProfileRepository;
 import com.bilgeadam.group1.repository.entity.WebsiteManagerProfile;
@@ -18,9 +20,19 @@ public class WebsiteManagerProfileService {
     }
 
 
-    public WebsiteManagerProfileCreateResponseDto createWebsiteManagerProfile (WebsiteManagerProfileCreateRequestDto dto){
-        WebsiteManagerProfile profile = IWebsiteManagerMapper.INSTANCE.fromRequestToWebsiteManagerProfile(dto);
+    public boolean createWebsiteManagerProfile (WebsiteManagerProfileCreateRequestDto dto){
+        try {
+            WebsiteManagerProfile profile = IWebsiteManagerMapper.INSTANCE.fromRequestToWebsiteManagerProfile(dto);
+            websiteManagerProfileRepository.save(profile);
+            return true;
+        }catch (Exception e){
+            throw new WebsiteManagerException(ErrorType.WEBSITE_MANAGER_NOT_CREATED);
+        }
+    }
+
+    public Boolean updateToken(UpdateTokenRequestDto dto){
+        WebsiteManagerProfile profile = IWebsiteManagerMapper.INSTANCE.fromTokenUpdateRequestToWebsiteManagerProfile(dto);
         websiteManagerProfileRepository.save(profile);
-        return IWebsiteManagerMapper.INSTANCE.fromWebsiteManagerProfileToResponse(profile);
+        return true;
     }
 }
