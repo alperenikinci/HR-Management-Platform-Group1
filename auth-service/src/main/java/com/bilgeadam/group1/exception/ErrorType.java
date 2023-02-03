@@ -19,7 +19,7 @@ public enum ErrorType {
     INVALID_TOKEN(1114,"Gecersiz Token?",HttpStatus.BAD_REQUEST),
     REGISTER_REPASSWORD_ERROR(1115,"Girilen sifreler uyusmuyor",HttpStatus.BAD_REQUEST),
     DUPLICATE_EMAIL_ERROR(1116,"Girdiginiz E-mail kullanilmakta.",HttpStatus.BAD_REQUEST);
-//TODO hata açıklamasına bak.
+    //TODO hata açıklamasına bak.
     private int code;
     private String message;
     HttpStatus httpStatus;
