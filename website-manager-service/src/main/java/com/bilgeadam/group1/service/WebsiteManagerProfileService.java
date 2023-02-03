@@ -59,7 +59,7 @@ public class WebsiteManagerProfileService extends ServiceManager<WebsiteManagerP
     public Optional<UpdateTokenResponseDto> updateTokenByEmail(UpdateTokenRequestDto dto){
         Optional<WebsiteManagerProfile> profile = websiteManagerProfileRepository.findOptionalByEmail(dto.getEmail());
         if(!profile.isPresent()){
-            throw new WebsiteManagerException(ErrorType.USER_NOT_FOUND);
+            throw new WebsiteManagerException(ErrorType.EMAIL_NOT_FOUND);
         }
         profile.get().setToken(dto.getToken());
         websiteManagerProfileRepository.save(profile.get());
@@ -73,7 +73,7 @@ public class WebsiteManagerProfileService extends ServiceManager<WebsiteManagerP
     public Optional<ProfileUpdateResponse> updateProfileByToken(ProfileUpdateRequest request){
         Optional<WebsiteManagerProfile> profile = websiteManagerProfileRepository.findOptionalByToken(request.getToken());
         if(!profile.isPresent()){
-            throw new WebsiteManagerException(ErrorType.USER_NOT_FOUND);
+            throw new WebsiteManagerException(ErrorType.INVALID_TOKEN);
         }
         profile.get().setName(request.getName());
         profile.get().setPhotoUrl(request.getPhotoUrl());
