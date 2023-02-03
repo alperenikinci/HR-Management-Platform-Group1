@@ -5,6 +5,7 @@ import com.bilgeadam.group1.dto.request.ProfileUpdateRequest;
 import com.bilgeadam.group1.dto.request.UpdateTokenRequestDto;
 import com.bilgeadam.group1.dto.request.WebsiteManagerProfileCreateRequestDto;
 import com.bilgeadam.group1.dto.response.ProfileUpdateResponse;
+import com.bilgeadam.group1.dto.response.SummarisedFindAllResponse;
 import com.bilgeadam.group1.dto.response.UpdateTokenResponseDto;
 import com.bilgeadam.group1.exception.ErrorType;
 import com.bilgeadam.group1.exception.WebsiteManagerException;
@@ -14,6 +15,7 @@ import com.bilgeadam.group1.repository.entity.WebsiteManagerProfile;
 import com.bilgeadam.group1.utility.ServiceManager;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -87,5 +89,10 @@ public class WebsiteManagerProfileService extends ServiceManager<WebsiteManagerP
     }
     public List<WebsiteManagerProfile> findAll(){
         return websiteManagerProfileRepository.findAll();
+    }
+
+    public List<SummarisedFindAllResponse> findAllBySummarisedInformation(){
+        List<WebsiteManagerProfile> responseList = websiteManagerProfileRepository.findAll();
+       return IWebsiteManagerProfileMapper.INSTANCE.fromWebsiteManagerProfileToResponse(responseList);
     }
 }

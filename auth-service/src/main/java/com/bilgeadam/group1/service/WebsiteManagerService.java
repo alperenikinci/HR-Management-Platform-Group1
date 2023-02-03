@@ -5,7 +5,6 @@ import com.bilgeadam.group1.dto.request.RegisterRequestDto;
 import com.bilgeadam.group1.dto.request.UpdateTokenRequestDto;
 import com.bilgeadam.group1.dto.response.LoginResponseDto;
 import com.bilgeadam.group1.dto.response.RegisterResponseDto;
-import com.bilgeadam.group1.dto.response.UpdateTokenResponseDto;
 import com.bilgeadam.group1.exception.AuthManagerException;
 import com.bilgeadam.group1.exception.ErrorType;
 import com.bilgeadam.group1.manager.IWebsiteManagerManager;

@@ -3,6 +3,7 @@ import com.bilgeadam.group1.dto.request.ProfileUpdateRequest;
 import com.bilgeadam.group1.dto.request.UpdateTokenRequestDto;
 import com.bilgeadam.group1.dto.request.WebsiteManagerProfileCreateRequestDto;
 import com.bilgeadam.group1.dto.response.ProfileUpdateResponse;
+import com.bilgeadam.group1.dto.response.SummarisedFindAllResponse;
 import com.bilgeadam.group1.dto.response.UpdateTokenResponseDto;
 import com.bilgeadam.group1.repository.entity.WebsiteManagerProfile;
 import com.bilgeadam.group1.service.WebsiteManagerProfileService;
@@ -50,5 +51,10 @@ public class WebsiteManagerController {
     @GetMapping("/findall")
     public ResponseEntity<List<WebsiteManagerProfile>> findAll(){
         return ResponseEntity.ok(websiteManagerProfileService.findAll());
+    }
+
+    @GetMapping("/findallsummarised")
+    public ResponseEntity<List<SummarisedFindAllResponse>> findAllResponse(){
+        return ResponseEntity.ok(websiteManagerProfileService.findAllBySummarisedInformation());
     }
 }
