@@ -28,7 +28,7 @@ public class WebsiteManagerController {
         return ResponseEntity.ok().build();
     }
     
-    @GetMapping("/findbyemail")
+    @GetMapping(FINDBYEMAIL)
     public ResponseEntity<Optional<WebsiteManagerProfile>> findOptionalByEmail(String email){
         return ResponseEntity.ok(websiteManagerProfileService.findByEmail(email));
     }
@@ -38,17 +38,17 @@ public class WebsiteManagerController {
         return ResponseEntity.ok(websiteManagerProfileService.updateTokenByEmail(dto));
     }
 
-    @GetMapping("/findbytoken")
+    @GetMapping(FINDBYTOKEN)
     public ResponseEntity<Optional<WebsiteManagerProfile>> findOptionalByToken(String token){
         return ResponseEntity.ok(websiteManagerProfileService.findOptionalByToken(token));
     }
 
-    @PutMapping("/updatebytoken")
+    @PutMapping(UPDATEBYTOKEN)
     public ResponseEntity<Optional<ProfileUpdateResponse>> updateByToken(ProfileUpdateRequest request){
         return ResponseEntity.ok(websiteManagerProfileService.updateProfileByToken(request));
     }
 
-    @GetMapping("/findall")
+    @GetMapping(FINDALL)
     public ResponseEntity<List<WebsiteManagerProfile>> findAll(){
         return ResponseEntity.ok(websiteManagerProfileService.findAll());
     }
