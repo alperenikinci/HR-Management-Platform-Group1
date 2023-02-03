@@ -53,7 +53,7 @@ public class WebsiteManagerController {
         return ResponseEntity.ok(websiteManagerProfileService.findAll());
     }
 
-    @GetMapping("/findallsummarised")
+    @GetMapping(FINDALLBYSUMMARISEDINFORMATION)
     public ResponseEntity<List<SummarisedFindAllResponse>> findAllResponse(){
         return ResponseEntity.ok(websiteManagerProfileService.findAllBySummarisedInformation());
     }

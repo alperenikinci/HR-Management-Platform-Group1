@@ -16,6 +16,7 @@ public class RestApi {
     public static final String UPDATEBYTOKEN = "/updatebytoken";
     public static final String UPDATEBYEMAIL="/updateusernameoremail";
     public static final String FINDALL="/findall";
+    public static final String FINDALLBYSUMMARISEDINFORMATION="/findallbysummarisedinformation";
     public static final String FINDBYID="/findbyid";
     public static final String FINDBYEMAIL = "/findbyemail";
     public static final String FINDBYTOKEN = "/findbytoken";
