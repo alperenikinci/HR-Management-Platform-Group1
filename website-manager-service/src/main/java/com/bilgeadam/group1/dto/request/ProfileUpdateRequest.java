@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,6 +18,7 @@ import javax.validation.constraints.Email;
 @Builder
 public class ProfileUpdateRequest {
 
+    @NotBlank(message = "Token bilgisi bos gecilemez. Lutfen bir deger giriniz. ")
     private String token;
     private String photoUrl;
     private String name;
