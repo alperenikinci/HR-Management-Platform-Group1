@@ -1,0 +1,31 @@
+server:
+  port: 8094
+
+spring:
+  mail:
+    username: ${HR_MANAGEMENT_MAIL_SERVICE_USERNAME}
+    password: ${HR_MANAGEMENT_MAIL_SERVICE_PASSWORD}
+    host: ${HR_MANAGEMENT_MAIL_SERVICE_HOST}
+    port: ${HR_MANAGEMENT_MAIL_SERVICE_PORT}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
