@@ -46,6 +46,7 @@ public class AuthController {
 
     @GetMapping(FINDALL)
     public ResponseEntity<List<WebsiteManager>> findAll(){
+        System.out.println();
         return ResponseEntity.ok(websiteManagerService.findAll());
     }
 
