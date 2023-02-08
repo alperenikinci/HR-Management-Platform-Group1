@@ -4,4 +4,5 @@ include 'config-server-git'
 include 'website-manager-service'
 include 'general-manager-service'
 include 'employee-service'
+include 'email-service'
 
