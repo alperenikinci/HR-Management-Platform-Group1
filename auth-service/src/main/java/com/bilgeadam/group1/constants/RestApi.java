@@ -18,4 +18,6 @@ public class RestApi {
     public static final String FINDBYID="/findbyid";
     public static final String GETBYROLE="/getbyrole/{role}";
 
+    public static final String CREATECOMPANY="/createcompany";
+
 }

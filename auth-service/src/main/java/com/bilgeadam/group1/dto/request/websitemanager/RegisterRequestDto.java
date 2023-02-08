@@ -1,4 +1,4 @@
-package com.bilgeadam.group1.dto.request;
+package com.bilgeadam.group1.dto.request.websitemanager;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

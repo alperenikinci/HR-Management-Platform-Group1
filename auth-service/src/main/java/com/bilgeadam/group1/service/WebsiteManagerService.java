@@ -1,8 +1,8 @@
 package com.bilgeadam.group1.service;
 
-import com.bilgeadam.group1.dto.request.LoginRequestDto;
-import com.bilgeadam.group1.dto.request.RegisterRequestDto;
-import com.bilgeadam.group1.dto.request.UpdateTokenRequestDto;
+import com.bilgeadam.group1.dto.request.websitemanager.LoginRequestDto;
+import com.bilgeadam.group1.dto.request.websitemanager.RegisterRequestDto;
+import com.bilgeadam.group1.dto.request.websitemanager.UpdateTokenRequestDto;
 import com.bilgeadam.group1.dto.response.LoginResponseDto;
 import com.bilgeadam.group1.dto.response.RegisterResponseDto;
 import com.bilgeadam.group1.exception.AuthManagerException;

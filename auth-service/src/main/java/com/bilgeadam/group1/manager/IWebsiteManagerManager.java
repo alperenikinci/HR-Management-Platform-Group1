@@ -1,7 +1,7 @@
 package com.bilgeadam.group1.manager;
 
-import com.bilgeadam.group1.dto.request.UpdateTokenRequestDto;
-import com.bilgeadam.group1.dto.request.WebsiteManagerProfileCreateRequestDto;
+import com.bilgeadam.group1.dto.request.websitemanager.UpdateTokenRequestDto;
+import com.bilgeadam.group1.dto.request.websitemanager.WebsiteManagerProfileCreateRequestDto;
 import com.bilgeadam.group1.dto.response.UpdateTokenResponseDto;
 
 import org.springframework.cloud.openfeign.FeignClient;
