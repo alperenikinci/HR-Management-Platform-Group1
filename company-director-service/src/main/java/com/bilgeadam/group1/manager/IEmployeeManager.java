@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import static com.bilgeadam.group1.constants.RestApi.CREATE;
 
-@FeignClient(url = "${myapplication.feign.employee.profile}",name = "employee-employeeprofile",decode404 = true)
-public interface IEmployeeManager {
-
-    @PostMapping(CREATE)
-    public ResponseEntity<Boolean> createEmployee(@RequestBody NewCreateEmployeRequestDto dto);
-}
+//@FeignClient(url = "${myapplication.feign.employee.profile}",name = "employee-employeeprofile",decode404 = true)
+//public interface IEmployeeManager {
+//
+//    @PostMapping(/re)
+//    public ResponseEntity<Boolean> createEmployee(@RequestBody NewCreateEmployeRequestDto dto);
+//}

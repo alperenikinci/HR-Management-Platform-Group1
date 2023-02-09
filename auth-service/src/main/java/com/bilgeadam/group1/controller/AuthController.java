@@ -2,6 +2,7 @@ package com.bilgeadam.group1.controller;
 
 
 import com.bilgeadam.group1.dto.request.company.CreateCompanyRequestDto;
+import com.bilgeadam.group1.dto.request.companydirector.RegisterCompanyDirectorRequestDto;
 import com.bilgeadam.group1.dto.request.websitemanager.LoginRequestDto;
 import com.bilgeadam.group1.dto.request.websitemanager.RegisterRequestDto;
 import com.bilgeadam.group1.dto.response.company.FindAllCompaniesByBriefResponse;
@@ -9,6 +10,7 @@ import com.bilgeadam.group1.dto.response.websitemanager.LoginResponseDto;
 import com.bilgeadam.group1.dto.response.websitemanager.RegisterResponseDto;
 import com.bilgeadam.group1.repository.entity.Company;
 import com.bilgeadam.group1.repository.entity.WebsiteManager;
+import com.bilgeadam.group1.service.CompanyDirectorService;
 import com.bilgeadam.group1.service.CompanyService;
 import com.bilgeadam.group1.service.WebsiteManagerService;
 import com.bilgeadam.group1.utility.JwtTokenManager;
@@ -28,6 +30,7 @@ import static com.bilgeadam.group1.constants.RestApi.*;
 public class AuthController {
 
     private final WebsiteManagerService websiteManagerService;
+    private final CompanyDirectorService companyDirectorService;
     private final CompanyService companyService;
     private final JwtTokenManager jwtTokenManager;
 
@@ -38,10 +41,10 @@ public class AuthController {
         return  ResponseEntity.ok(websiteManagerService.registerWebsiteManager(dto));
     }
 
-    @PostMapping(REGISTERGENERALMANAGER)
-    @Operation(summary = "General Manager kayit eden metot")
-    public ResponseEntity<RegisterResponseDto> registerGeneralManager(@RequestBody @Valid RegisterRequestDto dto){
-        return  ResponseEntity.ok( websiteManagerService.registerWebsiteManager(dto));
+    @PostMapping(REGISTERCOMPANYDIRECTOR)
+    @Operation(summary = "Company director kayit eden metot")
+    public ResponseEntity<RegisterResponseDto> registerCompanyDirector(@RequestBody @Valid RegisterCompanyDirectorRequestDto dto){
+        return  ResponseEntity.ok(companyDirectorService.registerCompanyDirector(dto));
     }
 
     @PostMapping(LOGIN)
@@ -69,5 +72,6 @@ public class AuthController {
     public ResponseEntity<List<Company>> findAllCompanies(){
         return ResponseEntity.ok(companyService.findAll());
     }
+
 
 }

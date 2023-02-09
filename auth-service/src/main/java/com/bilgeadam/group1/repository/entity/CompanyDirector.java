@@ -15,8 +15,7 @@ import javax.validation.constraints.NotBlank;
 @Data
 @Builder
 @Entity
-public class Employee {
-
+public class CompanyDirector {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,9 +26,7 @@ public class Employee {
     private String email;
     private String password;
     private String token;
-
     @Enumerated(EnumType.STRING)
     @Builder.Default
-    Roles role = Roles.EMPLOYEE;
-
+    Roles role = Roles.COMPANY_DIRECTOR;
 }

@@ -33,7 +33,7 @@ public class CompanyManagerProfileService extends ServiceManager<CompanyManagerP
     @Transactional
     public RegisterResponseDto registerEmployee(RegisterRequestDto dto){
 
-        if (companyProfileRepository.findOptionalByName(dto.getName()).isPresent()){
+        if (companyProfileRepository.findOptionalByName(dto.getEmail()).isPresent()){
             throw  new CompanyManagerException(ErrorType.NAME_DUPLICATE);
         }
         CompanyManagerProfile companyManagerProfile= ICompanyManagerProfileMapper.INSTANCE.toCompanyManager(dto);
@@ -46,9 +46,7 @@ public class CompanyManagerProfileService extends ServiceManager<CompanyManagerP
             System.out.println(e.toString());
             throw  new CompanyManagerException(ErrorType.EMPLOYEE_NOT_CREATED);
         }
-
     }
-
     public List<CompanyManagerProfile> findAll(){
         return companyProfileRepository.findAll();
     }

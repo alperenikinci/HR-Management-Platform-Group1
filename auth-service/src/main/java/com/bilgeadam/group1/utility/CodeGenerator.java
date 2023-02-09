@@ -13,7 +13,7 @@ public class CodeGenerator {
         for (String string:data){
             newCode.append(string.charAt(0));
         }
-        return newCode.toString();
+        return "AA"+newCode.toString()+"**";
     }
 
 

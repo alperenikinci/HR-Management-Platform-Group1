@@ -23,7 +23,6 @@ public class WebsiteManagerProfile {
     private String name;
     private String middleName;
     private String surname;
-
     @Email
     @Column(unique = true)
     private String email;
