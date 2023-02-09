@@ -1,9 +1,11 @@
 package com.bilgeadam.group1.service;
 
+import com.bilgeadam.group1.dto.request.companydirector.CompanyManagerProfileCreateRequestDto;
 import com.bilgeadam.group1.dto.request.companydirector.RegisterCompanyDirectorRequestDto;
 import com.bilgeadam.group1.dto.response.websitemanager.RegisterResponseDto;
 import com.bilgeadam.group1.exception.AuthManagerException;
 import com.bilgeadam.group1.exception.ErrorType;
+import com.bilgeadam.group1.manager.ICompanyDirectorManager;
 import com.bilgeadam.group1.mapper.ICompanyDirectorMapper;
 import com.bilgeadam.group1.repository.ICompanyDirectorRepository;
 import com.bilgeadam.group1.repository.entity.CompanyDirector;
@@ -19,12 +21,12 @@ import java.util.List;
 public class CompanyDirectorService extends ServiceManager<CompanyDirector,Long> {
 
     private final ICompanyDirectorRepository companyDirectorRepository;
-    private final JwtTokenManager jwtTokenManager;
+    private final ICompanyDirectorManager companyDirectorManager;
 
-    public CompanyDirectorService(ICompanyDirectorRepository companyDirectorRepository, JwtTokenManager jwtTokenManager) {
+    public CompanyDirectorService(ICompanyDirectorRepository companyDirectorRepository, JwtTokenManager jwtTokenManager, ICompanyDirectorManager companyDirectorManager) {
         super(companyDirectorRepository);
         this.companyDirectorRepository = companyDirectorRepository;
-        this.jwtTokenManager = jwtTokenManager;
+        this.companyDirectorManager = companyDirectorManager;
     }
 
     @Transactional
@@ -37,7 +39,7 @@ public class CompanyDirectorService extends ServiceManager<CompanyDirector,Long>
             companyDirector.setEmail(dto.getEmail());
             companyDirector.setPassword(CodeGenerator.generateCode());
             save(companyDirector);
-            //TODO profil oluşturma metodu eklenecek
+            companyDirectorManager.createCompanyManagerProfile(ICompanyDirectorMapper.INSTANCE.fromCompanyDirectorToCompanyDirectorProfileCreateRequestDto(companyDirector));
             return ICompanyDirectorMapper.INSTANCE.fromCompanyDirectorToResponse(companyDirector);
         } catch (Exception e){
             throw new AuthManagerException(ErrorType.INTERNAL_ERROR);

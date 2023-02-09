@@ -2,21 +2,19 @@ package com.bilgeadam.group1.mapper;
 
 import com.bilgeadam.group1.dto.request.*;
 import com.bilgeadam.group1.dto.response.ProfileUpdateResponse;
-import com.bilgeadam.group1.dto.response.RegisterResponseDto;
 import com.bilgeadam.group1.dto.response.SummarisedFindAllResponse;
 import com.bilgeadam.group1.dto.response.UpdateTokenResponseDto;
 import com.bilgeadam.group1.repository.entity.CompanyManagerProfile;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
-public interface ICompanyManagerProfileMapper {
+public interface ICompanyDirectorProfileMapper {
 
-    ICompanyManagerProfileMapper INSTANCE = Mappers.getMapper(ICompanyManagerProfileMapper.class);
+    ICompanyDirectorProfileMapper INSTANCE = Mappers.getMapper(ICompanyDirectorProfileMapper.class);
 
 
     CompanyManagerProfile fromRequestToCompanyManagerProfile(final CompanyManagerProfileCreateRequestDto companyManagerProfileCreateRequestDto);

@@ -52,6 +52,11 @@ public class AuthController {
         return  ResponseEntity.ok(websiteManagerService.login(dto));
     }
 
+    @PostMapping("/loginascompanydirector")
+    public ResponseEntity<LoginResponseDto> loginAsCompanyDirector(@RequestBody @Valid LoginRequestDto dto){
+        return ResponseEntity.ok(websiteManagerService.loginAsCompanyDirector(dto));
+    }
+
     @GetMapping(FINDALLWEBSITEMANAGERS)
     public ResponseEntity<List<WebsiteManager>> findAll(){
         System.out.println();

@@ -2,22 +2,18 @@ package com.bilgeadam.group1.service;
 
 import com.bilgeadam.group1.dto.request.CompanyManagerProfileCreateRequestDto;
 import com.bilgeadam.group1.dto.request.ProfileUpdateRequest;
-import com.bilgeadam.group1.dto.request.RegisterRequestDto;
 import com.bilgeadam.group1.dto.request.UpdateTokenRequestDto;
 import com.bilgeadam.group1.dto.response.ProfileUpdateResponse;
-import com.bilgeadam.group1.dto.response.RegisterResponseDto;
 import com.bilgeadam.group1.dto.response.SummarisedFindAllResponse;
 import com.bilgeadam.group1.dto.response.UpdateTokenResponseDto;
 import com.bilgeadam.group1.exception.CompanyManagerException;
 import com.bilgeadam.group1.exception.ErrorType;
-import com.bilgeadam.group1.mapper.ICompanyManagerProfileMapper;
+import com.bilgeadam.group1.mapper.ICompanyDirectorProfileMapper;
 import com.bilgeadam.group1.repository.ICompanyManagerProfileRepository;
 import com.bilgeadam.group1.repository.entity.CompanyManagerProfile;
-import com.bilgeadam.group1.utility.CodeGenerator;
 import com.bilgeadam.group1.utility.ServiceManager;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,9 +21,9 @@ import java.util.Optional;
 public class CompanyManagerProfileService extends ServiceManager<CompanyManagerProfile,Long> {
 
     private final ICompanyManagerProfileRepository companyManagerProfileRepository;
-    private final ICompanyManagerProfileMapper companyManagerProfileMapper;
+    private final ICompanyDirectorProfileMapper companyManagerProfileMapper;
 
-    public CompanyManagerProfileService(ICompanyManagerProfileRepository companyManagerProfileRepository, ICompanyManagerProfileMapper companyManagerProfileMapper){
+    public CompanyManagerProfileService(ICompanyManagerProfileRepository companyManagerProfileRepository, ICompanyDirectorProfileMapper companyManagerProfileMapper){
         super(companyManagerProfileRepository);
         this.companyManagerProfileRepository = companyManagerProfileRepository;
         this.companyManagerProfileMapper = companyManagerProfileMapper;
@@ -36,7 +32,7 @@ public class CompanyManagerProfileService extends ServiceManager<CompanyManagerP
 
     public boolean createCompanyManagerProfile (CompanyManagerProfileCreateRequestDto dto){
         try {
-            CompanyManagerProfile profile = ICompanyManagerProfileMapper.INSTANCE.fromRequestToCompanyManagerProfile(dto);
+            CompanyManagerProfile profile = ICompanyDirectorProfileMapper.INSTANCE.fromRequestToCompanyManagerProfile(dto);
             companyManagerProfileRepository.save(profile);
             return true;
         }catch (Exception e){
@@ -85,6 +81,6 @@ public class CompanyManagerProfileService extends ServiceManager<CompanyManagerP
 
     public List<SummarisedFindAllResponse> findAllBySummarisedInformation(){
         List<CompanyManagerProfile> responseList = companyManagerProfileRepository.findAll();
-        return ICompanyManagerProfileMapper.INSTANCE.fromCompanyManagerProfileToResponse(responseList);
+        return ICompanyDirectorProfileMapper.INSTANCE.fromCompanyManagerProfileToResponse(responseList);
     }
 }

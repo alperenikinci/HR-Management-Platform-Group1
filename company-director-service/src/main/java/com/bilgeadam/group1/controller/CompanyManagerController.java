@@ -21,7 +21,7 @@ import java.util.Optional;
 
 import static com.bilgeadam.group1.constants.RestApi.*;
 
-@RequestMapping(COMPANYMANAGER)
+@RequestMapping(COMPANYDIRECTOR)
 @RestController
 @RequiredArgsConstructor
 public class CompanyManagerController {
@@ -44,6 +44,8 @@ public class CompanyManagerController {
     public ResponseEntity<Optional<UpdateTokenResponseDto>> updateTokenByEmail(@RequestBody UpdateTokenRequestDto dto){
         return ResponseEntity.ok(companyManagerProfileService.updateTokenByEmail(dto));
     }
+
+
 
     @GetMapping(FINDBYTOKEN)
     public ResponseEntity<Optional<CompanyManagerProfile>> findOptionalByToken(String token){

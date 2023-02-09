@@ -3,7 +3,7 @@ package com.bilgeadam.group1.constants;
 public class RestApi {
 
     public static final String VERSION="api/v1";
-    public static final String COMPANYMANAGER=VERSION+"/companymanager";
+    public static final String COMPANYDIRECTOR=VERSION+"/companydirector";
 
     public static final String REGISTERWEBSITEMANAGER="/registerwebsitemanager";
     public static final String REGISTERGENERALMANAGER="/registergeneralmanager";

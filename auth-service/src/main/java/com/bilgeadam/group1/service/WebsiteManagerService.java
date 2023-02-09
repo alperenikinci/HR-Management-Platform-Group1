@@ -7,9 +7,13 @@ import com.bilgeadam.group1.dto.response.websitemanager.LoginResponseDto;
 import com.bilgeadam.group1.dto.response.websitemanager.RegisterResponseDto;
 import com.bilgeadam.group1.exception.AuthManagerException;
 import com.bilgeadam.group1.exception.ErrorType;
+import com.bilgeadam.group1.manager.ICompanyDirectorManager;
 import com.bilgeadam.group1.manager.IWebsiteManagerManager;
+import com.bilgeadam.group1.mapper.ICompanyDirectorMapper;
 import com.bilgeadam.group1.mapper.IWebsiteManagerMapper;
+import com.bilgeadam.group1.repository.ICompanyDirectorRepository;
 import com.bilgeadam.group1.repository.IWebsiteManagerRepository;
+import com.bilgeadam.group1.repository.entity.CompanyDirector;
 import com.bilgeadam.group1.repository.entity.WebsiteManager;
 import com.bilgeadam.group1.utility.CodeGenerator;
 import com.bilgeadam.group1.utility.JwtTokenManager;
@@ -25,13 +29,18 @@ public class WebsiteManagerService extends ServiceManager<WebsiteManager,Long > 
 
     private final IWebsiteManagerRepository websiteManagerRepository;
     private final IWebsiteManagerManager websiteManagerManager;
+    private final ICompanyDirectorRepository companyDirectorRepository;
+    private final ICompanyDirectorManager companyDirectorManager;
+
     private final JwtTokenManager jwtTokenManager;
 
 
-    public WebsiteManagerService(IWebsiteManagerRepository websiteManagerRepository, IWebsiteManagerManager websiteManagerManager, JwtTokenManager jwtTokenManager) {
+    public WebsiteManagerService(IWebsiteManagerRepository websiteManagerRepository, IWebsiteManagerManager websiteManagerManager, ICompanyDirectorRepository companyDirectorRepository, ICompanyDirectorManager companyDirectorManager, JwtTokenManager jwtTokenManager) {
         super(websiteManagerRepository);
         this.websiteManagerRepository=websiteManagerRepository;
         this.websiteManagerManager = websiteManagerManager;
+        this.companyDirectorRepository = companyDirectorRepository;
+        this.companyDirectorManager = companyDirectorManager;
         this.jwtTokenManager = jwtTokenManager;
     }
 
@@ -70,7 +79,22 @@ public class WebsiteManagerService extends ServiceManager<WebsiteManager,Long > 
                 .email(loginResponseDto.getEmail())
                 .build();
         websiteManagerManager.updateTokenByEmail(updateTokenRequestDto);
-
+        return loginResponseDto;
+    }
+    //TODO Loginler tek bir çatı altında toplanacak.
+    public LoginResponseDto loginAsCompanyDirector(LoginRequestDto dto) {
+        Optional<CompanyDirector> companyDirector = companyDirectorRepository.findOptionalByEmailAndPassword(dto.getEmail(), dto.getPassword());
+        if (companyDirector.isEmpty()) {
+            throw new AuthManagerException(ErrorType.LOGIN_ERROR);
+        }
+        LoginResponseDto loginResponseDto = ICompanyDirectorMapper.INSTANCE.fromCompanyDirectorToLoginResponseDto(companyDirector.get());
+        String token = jwtTokenManager.createToken(companyDirector.get().getId());
+        loginResponseDto.setToken(token);
+        UpdateTokenRequestDto updateTokenRequestDto = UpdateTokenRequestDto.builder()
+                .token(token)
+                .email(loginResponseDto.getEmail())
+                .build();
+        companyDirectorManager.updateTokenByEmail(updateTokenRequestDto);
         return loginResponseDto;
     }
 
