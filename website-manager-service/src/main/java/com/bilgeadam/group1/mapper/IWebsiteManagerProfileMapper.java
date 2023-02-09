@@ -18,6 +18,7 @@ public interface IWebsiteManagerProfileMapper {
 
     IWebsiteManagerProfileMapper INSTANCE = Mappers.getMapper(IWebsiteManagerProfileMapper.class);
 
+
     WebsiteManagerProfile fromRequestToWebsiteManagerProfile(final WebsiteManagerProfileCreateRequestDto websiteManagerProfileCreateRequestDto);
 
     UpdateTokenResponseDto fromTokenRequestToResponse(final UpdateTokenRequestDto dto);
