@@ -5,14 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Builder
-public class RegisterResponseDto {
-
+public class FindAllEmployeeByBriefResponse {
+    private String name;
+    private String surname;
+    private String phone;
     private String email;
-    private String password;
-    private String activationCode;
-
+    private String company;
 }

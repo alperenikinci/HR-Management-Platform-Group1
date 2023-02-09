@@ -1,17 +1,15 @@
-package com.bilgeadam.group1.dto.response;
+package com.bilgeadam.group1.dto.response.websitemanager;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Builder
-public class LoginResponseDto {
+public class UpdateTokenResponseDto {
 
-    private String email;
-    private String password;
     private String token;
 }

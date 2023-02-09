@@ -14,10 +14,10 @@ public class RestApi {
     public static final String CREATE="/create";
     public static final String UPDATETOKEN = "/updatetoken";
     public static final String UPDATEBYEMAIL="/updateusernameoremail";
-    public static final String FINDALL="/findall";
+    public static final String FINDALLWEBSITEMANAGERS="/findallwebsitemanagers";
     public static final String FINDBYID="/findbyid";
     public static final String GETBYROLE="/getbyrole/{role}";
-
     public static final String CREATECOMPANY="/createcompany";
-
+    public static final String FINDCOMPANIESBYBRIEFINFORMATION="/findallcompaniesbybriefinformation";
+    public static final String FINDALLCOMPANIES ="/findallcompanies";
 }

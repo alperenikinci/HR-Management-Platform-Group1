@@ -2,8 +2,8 @@ package com.bilgeadam.group1.mapper;
 
 import com.bilgeadam.group1.dto.request.websitemanager.RegisterRequestDto;
 import com.bilgeadam.group1.dto.request.websitemanager.WebsiteManagerProfileCreateRequestDto;
-import com.bilgeadam.group1.dto.response.LoginResponseDto;
-import com.bilgeadam.group1.dto.response.RegisterResponseDto;
+import com.bilgeadam.group1.dto.response.websitemanager.LoginResponseDto;
+import com.bilgeadam.group1.dto.response.websitemanager.RegisterResponseDto;
 import com.bilgeadam.group1.repository.entity.WebsiteManager;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

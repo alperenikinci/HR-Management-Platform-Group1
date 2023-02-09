@@ -31,9 +31,9 @@ public class Company {
     private String address;
     private String email;
     private Long numberOfEmployees;
-    private LocalDate dateOfEstablishment;
-    private LocalDate effectiveDate;
-    private LocalDate contactTerminationDate;
+    private Long dateOfEstablishment;
+    private Long effectiveDate;
+    private Long contactTerminationDate;
     @Enumerated(EnumType.STRING)
     private CompanyActiveStatus activeStatus;
 

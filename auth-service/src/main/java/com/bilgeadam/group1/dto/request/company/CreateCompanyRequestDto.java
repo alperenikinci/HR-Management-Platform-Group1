@@ -29,9 +29,10 @@ public class CreateCompanyRequestDto {
     private String address;
     private String email;
     private Long numberOfEmployees;
-    private String dateOfEstablishmentAsString;
-    private String effectiveDateAsLocalDateAsString;
-    private String contactTerminationDateAsLocalDateAsString;
+    private Long dateOfEstablishmentAsString;
+    private Long effectiveDateAsLocalDateAsString;
+    private Long contactTerminationDateAsLocalDateAsString;
+    //TODO dateler Long'dan herhangi bir date formatına çekilip servicede parse edilecek. (Parse sırasında sıkıntı yarattığı için Long'a çektik)
     @Enumerated(EnumType.STRING)
     private CompanyActiveStatus activeStatus;
 }

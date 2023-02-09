@@ -4,8 +4,10 @@ package com.bilgeadam.group1.controller;
 import com.bilgeadam.group1.dto.request.company.CreateCompanyRequestDto;
 import com.bilgeadam.group1.dto.request.websitemanager.LoginRequestDto;
 import com.bilgeadam.group1.dto.request.websitemanager.RegisterRequestDto;
-import com.bilgeadam.group1.dto.response.LoginResponseDto;
-import com.bilgeadam.group1.dto.response.RegisterResponseDto;
+import com.bilgeadam.group1.dto.response.company.FindAllCompaniesByBriefResponse;
+import com.bilgeadam.group1.dto.response.websitemanager.LoginResponseDto;
+import com.bilgeadam.group1.dto.response.websitemanager.RegisterResponseDto;
+import com.bilgeadam.group1.repository.entity.Company;
 import com.bilgeadam.group1.repository.entity.WebsiteManager;
 import com.bilgeadam.group1.service.CompanyService;
 import com.bilgeadam.group1.service.WebsiteManagerService;
@@ -47,15 +49,25 @@ public class AuthController {
         return  ResponseEntity.ok(websiteManagerService.login(dto));
     }
 
-    @GetMapping(FINDALL)
+    @GetMapping(FINDALLWEBSITEMANAGERS)
     public ResponseEntity<List<WebsiteManager>> findAll(){
         System.out.println();
         return ResponseEntity.ok(websiteManagerService.findAll());
     }
 
     @PostMapping(CREATECOMPANY)
-    public ResponseEntity<String> createCompany(CreateCompanyRequestDto dto){
+    public ResponseEntity<String> createCompany(@RequestBody @Valid CreateCompanyRequestDto dto){
         return ResponseEntity.ok(companyService.createCompany(dto));
+    }
+
+    @GetMapping(FINDCOMPANIESBYBRIEFINFORMATION)
+    public ResponseEntity<List<FindAllCompaniesByBriefResponse>> findAllByBriefInfo(){
+        return ResponseEntity.ok(companyService.findAllWithBriefInformation());
+    }
+
+    @GetMapping(FINDALLCOMPANIES)
+    public ResponseEntity<List<Company>> findAllCompanies(){
+        return ResponseEntity.ok(companyService.findAll());
     }
 
 }
