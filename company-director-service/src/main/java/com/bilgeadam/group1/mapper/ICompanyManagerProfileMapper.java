@@ -1,9 +1,10 @@
 package com.bilgeadam.group1.mapper;
 
-import com.bilgeadam.group1.dto.request.NewCreateEmployeRequestDto;
-import com.bilgeadam.group1.dto.request.RegisterRequestDto;
+import com.bilgeadam.group1.dto.request.*;
+import com.bilgeadam.group1.dto.response.ProfileUpdateResponse;
 import com.bilgeadam.group1.dto.response.RegisterResponseDto;
 import com.bilgeadam.group1.dto.response.SummarisedFindAllResponse;
+import com.bilgeadam.group1.dto.response.UpdateTokenResponseDto;
 import com.bilgeadam.group1.repository.entity.CompanyManagerProfile;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -18,13 +19,17 @@ public interface ICompanyManagerProfileMapper {
     ICompanyManagerProfileMapper INSTANCE = Mappers.getMapper(ICompanyManagerProfileMapper.class);
 
 
-    CompanyManagerProfile  toCompanyManager(final RegisterRequestDto dto);
+    CompanyManagerProfile fromRequestToCompanyManagerProfile(final CompanyManagerProfileCreateRequestDto companyManagerProfileCreateRequestDto);
 
-    RegisterResponseDto toRegisterResponseDto(final CompanyManagerProfile companyManagerProfile);
+    UpdateTokenResponseDto fromTokenRequestToResponse(final UpdateTokenRequestDto dto);
 
-    @Mapping(source ="id" ,target ="employeeId")
-    NewCreateEmployeRequestDto toNewCreateEmployeeDto(final CompanyManagerProfile companyManagerProfile);
+    CompanyManagerProfile fromProfileUpdateRequestToCompanyManagerProfile(final ProfileUpdateRequest profileUpdateRequest);
+
+    ProfileUpdateResponse fromCompanyManagerProfileToProfileUpdateResponse(final CompanyManagerProfile companyManagerProfile);
 
     List<SummarisedFindAllResponse> fromCompanyManagerProfileToResponse(final List<CompanyManagerProfile> companyManagerProfiles);
+
+
+
 
 }
