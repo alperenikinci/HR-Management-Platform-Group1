@@ -1,7 +1,11 @@
 package com.bilgeadam.group1.controller;
 
 import com.bilgeadam.group1.dto.request.CreateEmployeeProfileRequest;
+import com.bilgeadam.group1.dto.request.ProfileUpdateRequest;
+import com.bilgeadam.group1.dto.request.UpdateTokenRequestDto;
 import com.bilgeadam.group1.dto.response.FindAllEmployeeByBriefResponse;
+import com.bilgeadam.group1.dto.response.ProfileUpdateResponse;
+import com.bilgeadam.group1.dto.response.UpdateTokenResponseDto;
 import com.bilgeadam.group1.repository.entity.EmployeeProfile;
 import com.bilgeadam.group1.service.EmployeeProfileService;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 import static com.bilgeadam.group1.constants.RestApi.*;
 
@@ -35,4 +40,23 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeProfileService.createEmployeeProfile(request));
     }
 
+    @GetMapping(FINDBYEMAIL)
+    public ResponseEntity<Optional<EmployeeProfile>> findOptionalByEmail(String email){
+        return ResponseEntity.ok(employeeProfileService.findByEmail(email));
+    }
+
+    @PutMapping(UPDATETOKEN)
+    public ResponseEntity<Optional<UpdateTokenResponseDto>> updateTokenByEmail(@RequestBody UpdateTokenRequestDto dto){
+        return ResponseEntity.ok(employeeProfileService.updateTokenByEmail(dto));
+    }
+
+    @GetMapping(FINDBYTOKEN)
+    public ResponseEntity<Optional<EmployeeProfile>> findOptionalByToken(String token){
+        return ResponseEntity.ok(employeeProfileService.findOptionalByToken(token));
+    }
+
+    @PutMapping(UPDATEBYTOKEN)
+    public ResponseEntity<Optional<ProfileUpdateResponse>> updateByToken(ProfileUpdateRequest request){
+        return ResponseEntity.ok(employeeProfileService.updateProfileByToken(request));
+    }
 }

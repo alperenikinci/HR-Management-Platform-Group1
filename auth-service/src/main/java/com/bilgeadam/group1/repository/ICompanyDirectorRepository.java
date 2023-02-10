@@ -13,4 +13,5 @@ public interface ICompanyDirectorRepository extends JpaRepository<CompanyDirecto
     Optional<CompanyDirector> findOptionalByEmailAndPassword(String email, String password);
     List<CompanyDirector> findAll();
     Optional<CompanyDirector> findOptionalByEmail(String email);
+    Optional<CompanyDirector> findOptionalByToken(String token);
 }

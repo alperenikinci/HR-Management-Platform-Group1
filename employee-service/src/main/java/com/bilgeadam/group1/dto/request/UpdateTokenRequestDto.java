@@ -5,12 +5,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
-public class CreateEmployeeProfileRequest {
+public class UpdateTokenRequestDto {
 
-    private Long employeeId;
     private String email;
+    private String token;
 }
