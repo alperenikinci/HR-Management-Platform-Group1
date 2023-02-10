@@ -1,6 +1,5 @@
 package com.bilgeadam.group1.service;
 
-import com.bilgeadam.group1.dto.request.companydirector.CompanyManagerProfileCreateRequestDto;
 import com.bilgeadam.group1.dto.request.companydirector.RegisterCompanyDirectorRequestDto;
 import com.bilgeadam.group1.dto.response.websitemanager.RegisterResponseDto;
 import com.bilgeadam.group1.exception.AuthManagerException;
@@ -16,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CompanyDirectorService extends ServiceManager<CompanyDirector,Long> {
@@ -47,5 +47,8 @@ public class CompanyDirectorService extends ServiceManager<CompanyDirector,Long>
     }
     public List<CompanyDirector> findAll(){
         return companyDirectorRepository.findAll();
+    }
+    public Optional<CompanyDirector> findByToken(String token){
+        return companyDirectorRepository.findOptionalByToken(token);
     }
 }

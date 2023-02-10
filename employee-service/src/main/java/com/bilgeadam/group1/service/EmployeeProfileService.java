@@ -36,7 +36,7 @@ public class EmployeeProfileService extends ServiceManager<EmployeeProfile,Long>
         try{
             EmployeeProfile profile = IEmployeeProfileMapper.INSTANCE.fromCreateRequestToEmployeeProfile(request);
             employeeProfileRepository.save(profile);
-            return request.getName()+" "+request.getSurname() + " Employee created";
+            return "Employee created";
         } catch (Exception e){
             throw new RuntimeException();
         }

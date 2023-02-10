@@ -62,8 +62,6 @@ public class WebsiteManagerService extends ServiceManager<WebsiteManager,Long > 
             System.out.println(e.toString());
             throw new AuthManagerException(ErrorType.DUPLICATE_EMAIL_ERROR);
         }
-
-
     }
 
     public LoginResponseDto login(LoginRequestDto dto) {
@@ -90,6 +88,8 @@ public class WebsiteManagerService extends ServiceManager<WebsiteManager,Long > 
         LoginResponseDto loginResponseDto = ICompanyDirectorMapper.INSTANCE.fromCompanyDirectorToLoginResponseDto(companyDirector.get());
         String token = jwtTokenManager.createToken(companyDirector.get().getId());
         loginResponseDto.setToken(token);
+//        Optional<CompanyDirector> director = companyDirectorRepository.findOptionalByEmail(loginResponseDto.getEmail());
+//        director.get().setToken(token);
         UpdateTokenRequestDto updateTokenRequestDto = UpdateTokenRequestDto.builder()
                 .token(token)
                 .email(loginResponseDto.getEmail())

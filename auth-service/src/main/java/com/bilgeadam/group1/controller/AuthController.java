@@ -1,6 +1,7 @@
 package com.bilgeadam.group1.controller;
 
 
+import com.bilgeadam.group1.dto.request.RegisterEmployeeRequestDto;
 import com.bilgeadam.group1.dto.request.company.CreateCompanyRequestDto;
 import com.bilgeadam.group1.dto.request.companydirector.RegisterCompanyDirectorRequestDto;
 import com.bilgeadam.group1.dto.request.websitemanager.LoginRequestDto;
@@ -12,6 +13,7 @@ import com.bilgeadam.group1.repository.entity.Company;
 import com.bilgeadam.group1.repository.entity.WebsiteManager;
 import com.bilgeadam.group1.service.CompanyDirectorService;
 import com.bilgeadam.group1.service.CompanyService;
+import com.bilgeadam.group1.service.EmployeeService;
 import com.bilgeadam.group1.service.WebsiteManagerService;
 import com.bilgeadam.group1.utility.JwtTokenManager;
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,6 +34,7 @@ public class AuthController {
     private final WebsiteManagerService websiteManagerService;
     private final CompanyDirectorService companyDirectorService;
     private final CompanyService companyService;
+    private final EmployeeService employeeService;
     private final JwtTokenManager jwtTokenManager;
 
 
@@ -78,5 +81,9 @@ public class AuthController {
         return ResponseEntity.ok(companyService.findAll());
     }
 
+    @PostMapping("/registeremployee")
+    public ResponseEntity<RegisterResponseDto> registerEmployee(RegisterEmployeeRequestDto dto){
+        return ResponseEntity.ok(employeeService.registerEmployeeWithToken(dto));
+    }
 
 }
