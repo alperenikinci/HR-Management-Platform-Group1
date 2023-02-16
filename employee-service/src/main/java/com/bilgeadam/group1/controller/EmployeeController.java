@@ -1,8 +1,6 @@
 package com.bilgeadam.group1.controller;
 
 import com.bilgeadam.group1.dto.request.CreateEmployeeProfileRequest;
-import com.bilgeadam.group1.dto.request.UpdateTokenRequestDto;
-import com.bilgeadam.group1.dto.response.FindAllEmployeeByBriefResponse;
 import com.bilgeadam.group1.dto.response.UpdateTokenResponseDto;
 import com.bilgeadam.group1.repository.entity.EmployeeProfile;
 import com.bilgeadam.group1.service.EmployeeProfileService;
@@ -44,4 +42,17 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeProfileService.updateTokenByEmail(dto));
     }
 
+    @GetMapping(FINDBYEMAIL)
+    public ResponseEntity<Optional<EmployeeProfile>> findOptionalByEmail(String email){
+        return ResponseEntity.ok(employeeProfileService.findByEmail(email));
+    }
+    @GetMapping(FINDBYTOKEN)
+    public ResponseEntity<Optional<EmployeeProfile>> findOptionalByToken(String token){
+        return ResponseEntity.ok(employeeProfileService.findOptionalByToken(token));
+    }
+
+    @PutMapping(UPDATEBYTOKEN)
+    public ResponseEntity<Optional<ProfileUpdateResponse>> updateByToken(ProfileUpdateRequest request){
+        return ResponseEntity.ok(employeeProfileService.updateProfileByToken(request));
+    }
 }

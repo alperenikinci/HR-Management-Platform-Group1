@@ -38,6 +38,9 @@ public class EmployeeProfileService extends ServiceManager<EmployeeProfile,Long>
     public List<EmployeeProfile> findAll(){
         return employeeProfileRepository.findAll();
     }
+    public Optional<EmployeeProfile> findByEmail(String email){
+        return employeeProfileRepository.findOptionalByEmail(email);
+    }
 
     public boolean createEmployeeProfile(CreateEmployeeProfileRequest request){
         try{
@@ -58,5 +61,36 @@ public class EmployeeProfileService extends ServiceManager<EmployeeProfile,Long>
         employeeProfileRepository.save(profile.get());
         return Optional.ofNullable(employeeProfileMapper.INSTANCE.fromTokenRequestToResponse(dto));
     }
+
+    public Optional<UpdateTokenResponseDto> updateTokenByEmail(UpdateTokenRequestDto dto){
+        Optional<EmployeeProfile> profile = employeeProfileRepository.findOptionalByEmail(dto.getEmail());
+        if(!profile.isPresent()){
+            throw new EmployeeException(ErrorType.EMAIL_NOT_FOUND);
+        }
+        profile.get().setToken(dto.getToken());
+        employeeProfileRepository.save(profile.get());
+        return Optional.ofNullable(employeeProfileMapper.INSTANCE.fromTokenRequestToResponse(dto));
+    }
+
+    public Optional<EmployeeProfile> findOptionalByToken(String token){
+        return employeeProfileRepository.findOptionalByToken(token);
+    }
+
+    public Optional<ProfileUpdateResponse> updateProfileByToken(ProfileUpdateRequest request){
+        Optional<EmployeeProfile> profile = employeeProfileRepository.findOptionalByToken(request.getToken());
+        if(!profile.isPresent()){
+            throw new EmployeeException(ErrorType.INVALID_TOKEN);
+        }
+        profile.get().setName(request.getName());
+        profile.get().setPhotoUrl(request.getPhotoUrl());
+        profile.get().setMiddleName(request.getMiddleName());
+        profile.get().setSurname(request.getSurname());
+        profile.get().setPhone(request.getPhone());
+        profile.get().setAddress(request.getAddress());
+        save(profile.get());
+        return Optional.ofNullable(employeeProfileMapper.INSTANCE.fromEmployeeProfileToProfileUpdateResponse(profile.get()));
+    }
+
+
 }
 
