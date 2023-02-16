@@ -11,4 +11,5 @@ public class RestApi {
 
     public static final String FINDEMPLOYEESBYBRIEFINFORMATION="/findemployeesbybriefinformation";
     public static final String FINDALLEMPLOYEES ="/findallemployees";
+    public static final String UPDATETOKEN = "/updatetoken";
 }

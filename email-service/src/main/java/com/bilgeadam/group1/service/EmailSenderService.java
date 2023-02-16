@@ -14,10 +14,10 @@ public class EmailSenderService {
 
     public void sendMail(Email model){
         SimpleMailMessage mailMessage=new SimpleMailMessage();
-        mailMessage.setFrom("musty1406@gmail.com");
+        mailMessage.setFrom("");
         mailMessage.setTo(model.getEmail());
-        mailMessage.setSubject("Aktivasyon Kodunuz: ");
-        mailMessage.setText(model.getActivationCode());
+        mailMessage.setSubject("Gecici sifreniz: ");
+        mailMessage.setText(model.getPassword());
         javaMailSender.send(mailMessage);
     }
 }

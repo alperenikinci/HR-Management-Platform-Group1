@@ -1,10 +1,13 @@
 package com.bilgeadam.group1.dto.request.websitemanager;
 
+import com.bilgeadam.group1.repository.enums.Roles;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -29,4 +32,7 @@ public class RegisterRequestDto {
     @Size(min = 8,max = 32)
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*!])(?=\\S+$).{8,}$")
     private String rePassword;
+
+    @Enumerated(EnumType.STRING)
+    Roles role;
 }
