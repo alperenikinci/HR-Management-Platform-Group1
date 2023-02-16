@@ -9,7 +9,11 @@ public class RestApi {
 
     public static final String CREATE="/create";
 
+    public static final String UPDATETOKEN = "/updatetoken";
+    public static final String UPDATEBYTOKEN = "/updatebytoken";
     public static final String FINDEMPLOYEESBYBRIEFINFORMATION="/findemployeesbybriefinformation";
     public static final String FINDALLEMPLOYEES ="/findallemployees";
-    public static final String UPDATETOKEN = "/updatetoken";
+    public static final String FINDBYEMAIL = "/findbyemail";
+    public static final String FINDBYTOKEN = "/findbytoken";
+
 }

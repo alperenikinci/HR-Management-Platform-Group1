@@ -16,9 +16,10 @@ import java.util.List;
 public interface IEmployeeProfileMapper {
 
     IEmployeeProfileMapper INSTANCE = Mappers.getMapper(IEmployeeProfileMapper.class);
-
     List<FindAllEmployeeByBriefResponse> fromEmployeeListToBriefResponse(final List<EmployeeProfile> employees );
-
     EmployeeProfile fromCreateRequestToEmployeeProfile(final CreateEmployeeProfileRequest request);
     UpdateTokenResponseDto fromTokenRequestToResponse(final UpdateTokenRequestDto dto);
+    EmployeeProfile fromRequestToEmployeeProfile(final CreateEmployeeProfileRequest createEmployeeProfileRequest);
+    EmployeeProfile fromProfileUpdateRequestToEmployeeProfile(final ProfileUpdateRequest profileUpdateRequest);
+    ProfileUpdateResponse fromEmployeeProfileToProfileUpdateResponse(final EmployeeProfile employeeProfile);
 }

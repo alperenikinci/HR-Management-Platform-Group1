@@ -44,4 +44,18 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeProfileService.updateTokenByEmail(dto));
     }
 
+    @GetMapping(FINDBYEMAIL)
+    public ResponseEntity<Optional<EmployeeProfile>> findOptionalByEmail(String email){
+        return ResponseEntity.ok(employeeProfileService.findByEmail(email));
+    }
+    @GetMapping(FINDBYTOKEN)
+    public ResponseEntity<Optional<EmployeeProfile>> findOptionalByToken(String token){
+        return ResponseEntity.ok(employeeProfileService.findOptionalByToken(token));
+    }
+
+    @PutMapping(UPDATEBYTOKEN)
+    public ResponseEntity<Optional<ProfileUpdateResponse>> updateByToken(ProfileUpdateRequest request){
+        return ResponseEntity.ok(employeeProfileService.updateProfileByToken(request));
+    }
+
 }
