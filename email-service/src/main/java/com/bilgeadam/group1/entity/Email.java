@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 public class Email {
 
     private String email;
-    private String activationCode;
+    private String password;
 }

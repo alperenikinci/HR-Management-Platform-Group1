@@ -18,8 +18,8 @@ public enum ErrorType {
     USER_NOT_CREATED(1113,"Kullan?c? Olusturlamad?",HttpStatus.BAD_REQUEST),
     INVALID_TOKEN(1114,"Gecersiz Token?",HttpStatus.BAD_REQUEST),
     REGISTER_REPASSWORD_ERROR(1115,"Girilen sifreler uyusmuyor",HttpStatus.BAD_REQUEST),
-    DUPLICATE_EMAIL_ERROR(1116,"Girdiginiz E-mail kullanilmakta.",HttpStatus.BAD_REQUEST);
-    //TODO hata açıklamasına bak.
+    DUPLICATE_EMAIL_ERROR(1116,"Girdiginiz E-mail kullanilmakta.",HttpStatus.BAD_REQUEST),
+    UNAUTHORISED_REGISTER_ATTEMPT(1117,"Personel yaratma yetkiniz bulunmamaktadır",HttpStatus.BAD_REQUEST);
     private int code;
     private String message;
     HttpStatus httpStatus;

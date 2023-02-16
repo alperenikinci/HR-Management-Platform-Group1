@@ -24,9 +24,9 @@ public class GlobalExceptionHandler {
         return ResponseEntity.ok("Beklenmeyen bir hata oluştu: " + ex.getMessage());
     }
 
-    @ExceptionHandler(java.lang.Exception.class)
+    @ExceptionHandler(Exception.class)
     @ResponseBody
-    public final ResponseEntity<ErrorMessage> handleAllExceptions(java.lang.Exception exception) {
+    public final ResponseEntity<ErrorMessage> handleAllExceptions(Exception exception) {
         ErrorType errorType = ErrorType.INTERNAL_ERROR;
         List<String> fields = new ArrayList<>();
         fields.add(exception.getMessage());
@@ -100,7 +100,7 @@ public class GlobalExceptionHandler {
 
 
 
-    private ErrorMessage createError(ErrorType errorType, java.lang.Exception exception) {
+    private ErrorMessage createError(ErrorType errorType, Exception exception) {
         System.out.println("Hata oluştu: " + exception.getMessage());
         return ErrorMessage.builder()
                 .code(errorType.getCode())

@@ -1,10 +1,8 @@
 package com.bilgeadam.group1.service;
 
 import com.bilgeadam.group1.dto.request.CreateEmployeeProfileRequest;
-import com.bilgeadam.group1.dto.request.ProfileUpdateRequest;
 import com.bilgeadam.group1.dto.request.UpdateTokenRequestDto;
 import com.bilgeadam.group1.dto.response.FindAllEmployeeByBriefResponse;
-import com.bilgeadam.group1.dto.response.ProfileUpdateResponse;
 import com.bilgeadam.group1.dto.response.UpdateTokenResponseDto;
 import com.bilgeadam.group1.exception.EmployeeException;
 import com.bilgeadam.group1.exception.ErrorType;
@@ -40,20 +38,28 @@ public class EmployeeProfileService extends ServiceManager<EmployeeProfile,Long>
     public List<EmployeeProfile> findAll(){
         return employeeProfileRepository.findAll();
     }
+    public Optional<EmployeeProfile> findByEmail(String email){
+        return employeeProfileRepository.findOptionalByEmail(email);
+    }
 
-    public String createEmployeeProfile(CreateEmployeeProfileRequest request){
+    public boolean createEmployeeProfile(CreateEmployeeProfileRequest request){
         try{
             EmployeeProfile profile = IEmployeeProfileMapper.INSTANCE.fromCreateRequestToEmployeeProfile(request);
             employeeProfileRepository.save(profile);
-            return "Employee created";
+            return true;
         } catch (Exception e){
             throw new RuntimeException();
         }
         //TODO exceptionu yazılacak.
     }
-
-    public Optional<EmployeeProfile> findByEmail(String email){
-        return employeeProfileRepository.findOptionalByEmail(email);
+    public Optional<UpdateTokenResponseDto> updateTokenByEmail(UpdateTokenRequestDto dto){
+        Optional<EmployeeProfile> profile = employeeProfileRepository.findOptionalByEmail(dto.getEmail());
+        if(!profile.isPresent()){
+            throw new EmployeeException(ErrorType.EMAIL_NOT_FOUND);
+        }
+        profile.get().setToken(dto.getToken());
+        employeeProfileRepository.save(profile.get());
+        return Optional.ofNullable(employeeProfileMapper.INSTANCE.fromTokenRequestToResponse(dto));
     }
 
     public Optional<UpdateTokenResponseDto> updateTokenByEmail(UpdateTokenRequestDto dto){

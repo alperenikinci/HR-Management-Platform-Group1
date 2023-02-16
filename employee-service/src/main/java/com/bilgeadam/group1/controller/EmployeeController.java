@@ -1,10 +1,6 @@
 package com.bilgeadam.group1.controller;
 
 import com.bilgeadam.group1.dto.request.CreateEmployeeProfileRequest;
-import com.bilgeadam.group1.dto.request.ProfileUpdateRequest;
-import com.bilgeadam.group1.dto.request.UpdateTokenRequestDto;
-import com.bilgeadam.group1.dto.response.FindAllEmployeeByBriefResponse;
-import com.bilgeadam.group1.dto.response.ProfileUpdateResponse;
 import com.bilgeadam.group1.dto.response.UpdateTokenResponseDto;
 import com.bilgeadam.group1.repository.entity.EmployeeProfile;
 import com.bilgeadam.group1.service.EmployeeProfileService;
@@ -17,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.bilgeadam.group1.constants.RestApi.*;
+import static com.bilgeadam.group1.constants.RestApi.UPDATETOKEN;
 
 @RestController
 @RequestMapping(EMPLOYEE)
@@ -36,13 +33,8 @@ public class EmployeeController {
     }
 
     @PostMapping(CREATE)
-    public ResponseEntity<String> createEmployeeProfile(@RequestBody @Valid CreateEmployeeProfileRequest request){
+    public ResponseEntity<Boolean> createEmployeeProfile(@RequestBody @Valid CreateEmployeeProfileRequest request){
         return ResponseEntity.ok(employeeProfileService.createEmployeeProfile(request));
-    }
-
-    @GetMapping(FINDBYEMAIL)
-    public ResponseEntity<Optional<EmployeeProfile>> findOptionalByEmail(String email){
-        return ResponseEntity.ok(employeeProfileService.findByEmail(email));
     }
 
     @PutMapping(UPDATETOKEN)
@@ -50,6 +42,10 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeProfileService.updateTokenByEmail(dto));
     }
 
+    @GetMapping(FINDBYEMAIL)
+    public ResponseEntity<Optional<EmployeeProfile>> findOptionalByEmail(String email){
+        return ResponseEntity.ok(employeeProfileService.findByEmail(email));
+    }
     @GetMapping(FINDBYTOKEN)
     public ResponseEntity<Optional<EmployeeProfile>> findOptionalByToken(String token){
         return ResponseEntity.ok(employeeProfileService.findOptionalByToken(token));

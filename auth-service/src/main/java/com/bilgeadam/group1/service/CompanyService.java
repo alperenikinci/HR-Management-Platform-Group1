@@ -8,7 +8,6 @@ import com.bilgeadam.group1.repository.entity.Company;
 import com.bilgeadam.group1.utility.ServiceManager;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 

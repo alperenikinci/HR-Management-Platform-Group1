@@ -19,7 +19,7 @@ public class EmployeeProfile {
     @Id
     @GeneratedValue
     private Long id;
-
+    private Long employeeId;
     private String photoUrl;
     private String name;
     private String middleName;

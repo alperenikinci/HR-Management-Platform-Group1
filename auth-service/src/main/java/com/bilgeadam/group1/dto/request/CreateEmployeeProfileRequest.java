@@ -18,4 +18,5 @@ public class CreateEmployeeProfileRequest {
 
     private Long employeeId;
     private String email;
+
 }

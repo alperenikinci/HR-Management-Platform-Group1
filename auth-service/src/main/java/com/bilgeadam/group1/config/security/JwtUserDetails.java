@@ -1,7 +1,7 @@
 package com.bilgeadam.group1.config.security;
 
-import com.bilgeadam.group1.repository.entity.WebsiteManager;
-import com.bilgeadam.group1.service.WebsiteManagerService;
+import com.bilgeadam.group1.repository.entity.Auth;
+import com.bilgeadam.group1.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -19,7 +19,7 @@ import java.util.Optional;
 public class JwtUserDetails implements UserDetailsService {
 
     @Autowired
-    private WebsiteManagerService websiteManagerService;
+    private AuthService authService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -27,7 +27,7 @@ public class JwtUserDetails implements UserDetailsService {
     }
 
     public UserDetails loadUserById(Long id) {
-        Optional<WebsiteManager> websiteManager = websiteManagerService.findById(id);
+        Optional<Auth> websiteManager = authService.findById(id);
         if(websiteManager.isPresent()){
             List<GrantedAuthority> authorityList = new ArrayList<>();
             authorityList.add(new SimpleGrantedAuthority(websiteManager.get().getRole().toString()));
