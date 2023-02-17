@@ -1,7 +1,7 @@
 package com.bilgeadam.group1.dto.response;
 
 import com.bilgeadam.group1.repository.enums.AdvanceType;
-import com.bilgeadam.group1.repository.enums.ConfirmationType;
+import com.bilgeadam.group1.repository.enums.ConfirmationStatus;
 import com.bilgeadam.group1.repository.enums.PriceType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,11 +17,12 @@ import javax.persistence.Enumerated;
 @Builder
 public class AdvanceResponseDto {
 
-    private ConfirmationType confirmationType = ConfirmationType.PENDING_APPROVAL;
-    private PriceType priceType = PriceType.TL;
+    private ConfirmationStatus confirmationType;
+    private PriceType priceType;
     private int price;
     private String details;
-    private AdvanceType advanceType = AdvanceType.PERSONAL;
+    private AdvanceType advanceType;
+
     @Builder.Default
     private Long createRequestDate = System.currentTimeMillis();
 }

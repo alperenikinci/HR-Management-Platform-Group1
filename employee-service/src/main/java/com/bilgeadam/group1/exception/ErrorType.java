@@ -17,7 +17,8 @@ public enum ErrorType {
     EMPLOYEE_NOT_CREATED(4116,"Personel Olusturulamadi",HttpStatus.BAD_REQUEST),
     EMAIL_NOT_FOUND(2117,"Bu email'e ait bir kullanici bulunamadi.",HttpStatus.BAD_REQUEST),
     COMPANY_MANAGER_NOT_CREATED(2118,"CompanyManager Olusturulamadi",HttpStatus.BAD_REQUEST),
-    INVALID_TOKEN(2114,"Gecersiz Token?",HttpStatus.BAD_REQUEST);
+    INVALID_TOKEN(2114,"Gecersiz Token?",HttpStatus.BAD_REQUEST),
+    SALARY_COUNT_ERROR(2115,"En fazla 3 maas avans alinabilir",HttpStatus.BAD_REQUEST);
     //TODO hata açıklamasına bak.
     private int code;
     private String message;

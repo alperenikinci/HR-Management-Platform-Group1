@@ -1,14 +1,19 @@
 package com.bilgeadam.group1.service;
 
 import com.bilgeadam.group1.dto.request.CreateEmployeeProfileRequest;
+import com.bilgeadam.group1.dto.request.ProfileUpdateRequest;
 import com.bilgeadam.group1.dto.request.UpdateTokenRequestDto;
 import com.bilgeadam.group1.dto.response.FindAllEmployeeByBriefResponse;
+import com.bilgeadam.group1.dto.response.ProfileUpdateResponse;
 import com.bilgeadam.group1.dto.response.UpdateTokenResponseDto;
 import com.bilgeadam.group1.exception.EmployeeException;
 import com.bilgeadam.group1.exception.ErrorType;
 import com.bilgeadam.group1.mapper.IEmployeeProfileMapper;
 import com.bilgeadam.group1.repository.IEmployeeProfileRepository;
+import com.bilgeadam.group1.repository.entity.Advance;
 import com.bilgeadam.group1.repository.entity.EmployeeProfile;
+import com.bilgeadam.group1.repository.entity.Expenditure;
+import com.bilgeadam.group1.repository.entity.Permission;
 import com.bilgeadam.group1.utility.ServiceManager;
 import org.springframework.stereotype.Service;
 
@@ -62,15 +67,6 @@ public class EmployeeProfileService extends ServiceManager<EmployeeProfile,Long>
         return Optional.ofNullable(employeeProfileMapper.INSTANCE.fromTokenRequestToResponse(dto));
     }
 
-    public Optional<UpdateTokenResponseDto> updateTokenByEmail(UpdateTokenRequestDto dto){
-        Optional<EmployeeProfile> profile = employeeProfileRepository.findOptionalByEmail(dto.getEmail());
-        if(!profile.isPresent()){
-            throw new EmployeeException(ErrorType.EMAIL_NOT_FOUND);
-        }
-        profile.get().setToken(dto.getToken());
-        employeeProfileRepository.save(profile.get());
-        return Optional.ofNullable(employeeProfileMapper.INSTANCE.fromTokenRequestToResponse(dto));
-    }
 
     public Optional<EmployeeProfile> findOptionalByToken(String token){
         return employeeProfileRepository.findOptionalByToken(token);
@@ -90,7 +86,32 @@ public class EmployeeProfileService extends ServiceManager<EmployeeProfile,Long>
         save(profile.get());
         return Optional.ofNullable(employeeProfileMapper.INSTANCE.fromEmployeeProfileToProfileUpdateResponse(profile.get()));
     }
+    public List<Expenditure> showExpendituresByEmployeeId(Long id){
+        Optional<EmployeeProfile> employee = employeeProfileRepository.findById(id);
+        if(employee.isPresent()){
+            return employee.get().getExpenditureList();
+        }else {
+            return Collections.emptyList();
+        }
+    }
 
 
+    public List<Advance> showAdvancesByEmployeeId(Long id) {
+        Optional<EmployeeProfile> employee = employeeProfileRepository.findById(id);
+        if(employee.isPresent()){
+            return employee.get().getAdvanceList();
+        }else {
+            return Collections.emptyList();
+        }
+    }
+
+    public List<Permission> showPermissionsByEmployeeId(Long id) {
+        Optional<EmployeeProfile> employee = employeeProfileRepository.findById(id);
+        if(employee.isPresent()){
+            return employee.get().getPermissionList();
+        }else {
+            return Collections.emptyList();
+        }
+    }
 }
 

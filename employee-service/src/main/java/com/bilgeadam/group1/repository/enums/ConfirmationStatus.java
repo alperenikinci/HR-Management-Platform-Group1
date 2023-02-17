@@ -1,6 +1,6 @@
 package com.bilgeadam.group1.repository.enums;
 
-public enum ConfirmationType {
+public enum ConfirmationStatus {
 
     PENDING_APPROVAL,
     APPROVED,

@@ -1,6 +1,6 @@
 package com.bilgeadam.group1.dto.request;
 
-import com.bilgeadam.group1.repository.enums.ConfirmationType;
+import com.bilgeadam.group1.repository.enums.ConfirmationStatus;
 import com.bilgeadam.group1.repository.enums.PermissionType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -17,14 +19,14 @@ import java.util.Date;
 @Builder
 public class PermissionRequestDto {
 
-    private Date startedDate;
-    private Date finishedDate;
-    private String permissionDay;
-    @Builder.Default
-    @Enumerated(EnumType.STRING)
-    private PermissionType permissionType = PermissionType.ADMINISTRATIVE;
+    private Long employeeId;
+    private LocalDate permissionRequestDate;
+    private LocalDate startedDate;
+    private LocalDate finishedDate;
 
-    @Builder.Default
     @Enumerated(EnumType.STRING)
-    private ConfirmationType permissionConfirmationType = ConfirmationType.PENDING_APPROVAL;
+    private PermissionType permissionType;
+
+    @Enumerated(EnumType.STRING)
+    private ConfirmationStatus permissionConfirmationType;
 }

@@ -1,11 +1,12 @@
 package com.bilgeadam.group1.dto.response;
 
-import com.bilgeadam.group1.repository.enums.ConfirmationType;
+import com.bilgeadam.group1.repository.enums.ConfirmationStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -14,11 +15,12 @@ import java.util.Date;
 @Builder
 public class PermissionResponseDto {
 
+
     private String permissionType;
-    private Date startedDate;
-    private Date finishedDate;
-    private String permissionDay;
-    private ConfirmationType permissionConfirmationType;
-    @Builder.Default
-    private Long createRequestDate = System.currentTimeMillis();
+    private LocalDate startedDate;
+    private LocalDate finishedDate;
+    private Long permissionDay;
+    private ConfirmationStatus permissionConfirmationType;
+
+    private Long createRequestDate;
 }

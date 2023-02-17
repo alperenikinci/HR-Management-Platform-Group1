@@ -27,6 +27,7 @@ public class CompanyManagerProfileService extends ServiceManager<CompanyManagerP
         super(companyManagerProfileRepository);
         this.companyManagerProfileRepository = companyManagerProfileRepository;
         this.companyManagerProfileMapper = companyManagerProfileMapper;
+
     }
 
 
@@ -83,4 +84,8 @@ public class CompanyManagerProfileService extends ServiceManager<CompanyManagerP
         List<CompanyManagerProfile> responseList = companyManagerProfileRepository.findAll();
         return ICompanyDirectorProfileMapper.INSTANCE.fromCompanyManagerProfileToResponse(responseList);
     }
+
+
+
+
 }

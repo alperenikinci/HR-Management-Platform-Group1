@@ -148,5 +148,18 @@ public class AuthService extends ServiceManager<Auth,Long> {
     }
 
 
-
+    public String forgotPassword(String email) {
+       Optional<Auth> auth = authRepository.findOptionalByEmail(email);
+        String password = CodeGenerator.generateCode();
+       if(!auth.isPresent()){
+           throw new AuthManagerException(ErrorType.USER_NOT_FOUND);
+       }
+       try {
+            auth.get().setPassword(password);
+            authRepository.save(auth.get());
+       }catch (Exception e){
+           throw new AuthManagerException(ErrorType.INTERNAL_ERROR);
+       }
+       return "Sifreniz basariyla sifirlanmistir. Yeni sifreniz ile giris yapabilirsiniz : " + password;
+    }
 }

@@ -1,7 +1,7 @@
 package com.bilgeadam.group1.dto.request;
 
 import com.bilgeadam.group1.repository.enums.AdvanceType;
-import com.bilgeadam.group1.repository.enums.ConfirmationType;
+import com.bilgeadam.group1.repository.enums.ConfirmationStatus;
 import com.bilgeadam.group1.repository.enums.PriceType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,19 +19,15 @@ import javax.validation.constraints.Size;
 public class AdvanceRequestDto {
 
 
-    @Builder.Default
+    private Long employeeId;
     @Enumerated(EnumType.STRING)
-    private ConfirmationType advanceConfirmationType = ConfirmationType.PENDING_APPROVAL;
+    private ConfirmationStatus advanceConfirmationType;
 
-    @Builder.Default
     @Enumerated(EnumType.STRING)
-    private PriceType priceType = PriceType.TL;
-
-    @Size(max = 3)
-    private int price;
+    private PriceType priceType;
+    private Long salaryCount;
     private String details;
 
-    @Builder.Default
     @Enumerated(EnumType.STRING)
-    private AdvanceType advanceType = AdvanceType.PERSONAL;
+    private AdvanceType advanceType;
 }

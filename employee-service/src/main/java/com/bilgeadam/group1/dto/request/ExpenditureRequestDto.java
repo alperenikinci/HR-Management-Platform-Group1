@@ -1,6 +1,6 @@
 package com.bilgeadam.group1.dto.request;
 
-import com.bilgeadam.group1.repository.enums.ConfirmationType;
+import com.bilgeadam.group1.repository.enums.ConfirmationStatus;
 import com.bilgeadam.group1.repository.enums.ExpenditureType;
 import com.bilgeadam.group1.repository.enums.PriceType;
 import lombok.AllArgsConstructor;
@@ -17,16 +17,15 @@ import javax.persistence.Enumerated;
 @Builder
 public class ExpenditureRequestDto {
 
-    @Builder.Default
+    private Long employeeId;
     @Enumerated(EnumType.STRING)
-    private ExpenditureType expenditureType = ExpenditureType.BUSINESS;
+    private ExpenditureType expenditureType;
+
     private int price;
-    @Builder.Default
+
     @Enumerated(EnumType.STRING)
-    private PriceType priceType = PriceType.TL;
+    private PriceType priceType;
     private String fileUrl;
-    @Builder.Default
-    @Enumerated(EnumType.STRING)
-    private ConfirmationType expenditureConfirmationType = ConfirmationType.PENDING_APPROVAL;
+    private ConfirmationStatus expenditureConfirmationType;
 
 }

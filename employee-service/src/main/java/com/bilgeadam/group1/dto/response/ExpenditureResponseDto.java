@@ -1,6 +1,6 @@
 package com.bilgeadam.group1.dto.response;
 
-import com.bilgeadam.group1.repository.enums.ConfirmationType;
+import com.bilgeadam.group1.repository.enums.ConfirmationStatus;
 import com.bilgeadam.group1.repository.enums.ExpenditureType;
 import com.bilgeadam.group1.repository.enums.PriceType;
 import lombok.AllArgsConstructor;
@@ -14,11 +14,12 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ExpenditureResponseDto {
 
-    private ExpenditureType expenditureType = ExpenditureType.BUSINESS;
+    private ExpenditureType expenditureType;
     private int price;
-    private PriceType priceType = PriceType.TL;
+    private PriceType priceType;
     private String fileUrl;
-    private ConfirmationType confirmationType = ConfirmationType.PENDING_APPROVAL;
+    private ConfirmationStatus confirmationType;
+
     @Builder.Default
     private Long createRequestDate = System.currentTimeMillis();
 }

@@ -1,11 +1,19 @@
 package com.bilgeadam.group1.controller;
 
 import com.bilgeadam.group1.dto.request.CreateEmployeeProfileRequest;
+import com.bilgeadam.group1.dto.request.PermissionRequestDto;
+import com.bilgeadam.group1.dto.request.ProfileUpdateRequest;
 import com.bilgeadam.group1.dto.request.UpdateTokenRequestDto;
 import com.bilgeadam.group1.dto.response.FindAllEmployeeByBriefResponse;
+import com.bilgeadam.group1.dto.response.PermissionResponseDto;
+import com.bilgeadam.group1.dto.response.ProfileUpdateResponse;
 import com.bilgeadam.group1.dto.response.UpdateTokenResponseDto;
+import com.bilgeadam.group1.repository.entity.Advance;
 import com.bilgeadam.group1.repository.entity.EmployeeProfile;
+import com.bilgeadam.group1.repository.entity.Expenditure;
+import com.bilgeadam.group1.repository.entity.Permission;
 import com.bilgeadam.group1.service.EmployeeProfileService;
+import com.bilgeadam.group1.service.PermissionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +31,7 @@ import static com.bilgeadam.group1.constants.RestApi.UPDATETOKEN;
 public class EmployeeController {
 
     private final EmployeeProfileService employeeProfileService;
+    private final PermissionService permissionService;
 
     @GetMapping(FINDALLEMPLOYEES)
     public ResponseEntity<List<EmployeeProfile>> findAllEmployees(){
@@ -57,5 +66,21 @@ public class EmployeeController {
     public ResponseEntity<Optional<ProfileUpdateResponse>> updateByToken(ProfileUpdateRequest request){
         return ResponseEntity.ok(employeeProfileService.updateProfileByToken(request));
     }
+
+    @GetMapping("/showexpenditures")
+    public ResponseEntity<List<Expenditure>> showExpendituresByEmployeeId(Long id){
+        return ResponseEntity.ok(employeeProfileService.showExpendituresByEmployeeId(id));
+    }
+
+    @GetMapping("/showadvances")
+    public ResponseEntity<List<Advance>> showAdvancesByEmployeeId(Long id){
+        return ResponseEntity.ok(employeeProfileService.showAdvancesByEmployeeId(id));
+    }
+
+    @GetMapping("/showpermissions")
+    public ResponseEntity<List<Permission>> showPermissionsByEmployeeId(Long id){
+        return ResponseEntity.ok(employeeProfileService.showPermissionsByEmployeeId(id));
+    }
+
 
 }

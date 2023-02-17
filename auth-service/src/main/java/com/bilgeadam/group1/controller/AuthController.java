@@ -79,4 +79,9 @@ public class AuthController {
         return ResponseEntity.ok(authService.findAllByRole(role));
     }
 
+    @PostMapping("forgotmypassword")
+    public ResponseEntity<String> forgotPassword(String email){
+        return ResponseEntity.ok(authService.forgotPassword(email));
+    }
+
 }
